@@ -1,0 +1,27 @@
+# 水清·人与共
+
+静态数据新闻网页项目。
+
+## 部署目录
+
+正式部署请使用：
+
+- `publish/`
+
+该目录已经包含上线所需的静态资源：
+
+- `index.html`
+- `css/`
+- `js/`
+- `images/`
+- `audio/`
+- `cover_images/`
+
+## 平台配置
+
+- Netlify: 根目录已提供 `netlify.toml`
+- Vercel: 根目录已提供 `vercel.json`
+
+## 本地预览
+
+直接打开 `publish/index.html` 即可预览。
