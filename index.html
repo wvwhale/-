@@ -1,0 +1,1995 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>水清·人与共 | 高原湖泊十年治理的多民族答卷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="progressBar"></div>
+<canvas id="cursorCanvas" aria-hidden="true"></canvas>
+
+<nav class="navbar" id="navbar">
+  <button class="logo-button" onclick="scrollToSection('hero')" aria-label="返回首页">
+    <div class="logo">水清·<span>人与共</span></div>
+  </button>
+  <div class="nav-actions">
+    <ul class="nav-links">
+      <li><a data-nav="hero" onclick="scrollToSection('hero')">首页</a></li>
+      <li><a data-nav="overview" onclick="scrollToSection('overview')">导语</a></li>
+      <li><a data-nav="chapterPortalPage" onclick="scrollToSection('chapterPortalPage')">第一章</a></li>
+      <li><a data-nav="chapterTwoPortalPage" onclick="scrollToSection('chapterTwoPortalPage')">第二章</a></li>
+      <li><a data-nav="chapterThreePortalPage" onclick="scrollToSection('chapterThreePortalPage')">第三章</a></li>
+      <li><a data-nav="chapterFourPortalPage" onclick="scrollToSection('chapterFourPortalPage')">第四章</a></li>
+      <li><a data-nav="chapterFivePortalPage" onclick="scrollToSection('chapterFivePortalPage')">第五章</a></li>
+    </ul>
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="播放背景音乐" aria-pressed="false">
+      <span class="music-toggle-disc" aria-hidden="true">
+        <span class="music-toggle-disc-core"></span>
+        <span class="music-toggle-disc-arm"></span>
+      </span>
+      <span class="music-toggle-text">
+        <span class="music-toggle-label">背景音乐</span>
+        <span class="music-toggle-state" id="musicToggleState">已暂停</span>
+      </span>
+    </button>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="打开菜单">☰</button>
+  </div>
+</nav>
+
+<audio id="bgmPlayer" src="audio/bgm.mp3" loop preload="auto"></audio>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-reveal-layer" id="heroRevealLayer" aria-hidden="true"></div>
+    <canvas class="hero-reveal-mask" id="heroRevealMask" aria-hidden="true"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-heading">
+      <div class="hero-label hero-anim hero-fade" style="animation-delay: 0.12s;">数据新闻</div>
+      <h1 class="hero-title">
+        <span class="hero-title-line hero-title-line-accent hero-anim hero-reveal" style="animation-delay: 0.25s;">水清·人与共</span>
+        <span class="hero-title-line hero-title-line-sub hero-anim hero-reveal" style="animation-delay: 0.42s;">高原湖泊十年治理的多民族答卷</span>
+      </h1>
+      <p class="hero-summary hero-anim hero-fade" style="animation-delay: 0.7s;">九大高原湖泊流域面积仅占云南省面积2.05%，却承载全省七分之一以上人口与四分之一以上GDP。十年治湖，让生态修复与多民族共护家园重新汇流到同一片湖面。</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary btn-hero hero-anim hero-fade" style="animation-delay: 0.88s;" onclick="scrollToSection('overview')">
+          <span>查看答卷</span>
+        </button>
+      </div>
+    </div>
+    <div class="hero-scroll" onclick="scrollToSection('overview')">向下阅读<span></span></div>
+  </section>
+
+  <section class="section overview-section" id="overview">
+    <div class="overview-shell">
+      <div class="overview-heading-row">
+        <div class="overview-heading-block">
+          <h2 class="overview-title">
+            <span class="overview-title-line">高原湖泊，</span>
+            <span class="overview-title-line">是镶嵌在</span>
+            <span class="overview-title-line">云岭大地上的</span>
+            <span class="overview-title-line">明珠。</span>
+          </h2>
+        </div>
+        <p class="overview-intro">滇池、洱海、抚仙湖、泸沽湖、阳宗海、程海、杞麓湖、异龙湖、星云湖。九颗“明珠”，共同构成云南最敏感也最重要的湖泊地带。</p>
+      </div>
+
+      <div class="overview-stage-panel">
+        <canvas class="overview-ripple-canvas" id="overviewRippleCanvas" aria-hidden="true"></canvas>
+        <div class="overview-ripple-glow" aria-hidden="true"></div>
+        <div class="overview-stage-copy">
+          <p class="overview-stage-lead">九大高原湖泊流域面积仅占云南省面积的 <span>2.05%</span>，却承载了全省七分之一以上人口与四分之一以上 GDP。</p>
+        </div>
+        <div class="overview-lake-strip" aria-label="九大高原湖泊">
+          <span class="overview-lake-chip">滇池</span>
+          <span class="overview-lake-chip">洱海</span>
+          <span class="overview-lake-chip">抚仙湖</span>
+          <span class="overview-lake-chip">泸沽湖</span>
+          <span class="overview-lake-chip">阳宗海</span>
+          <span class="overview-lake-chip">程海</span>
+          <span class="overview-lake-chip">杞麓湖</span>
+          <span class="overview-lake-chip">异龙湖</span>
+          <span class="overview-lake-chip">星云湖</span>
+        </div>
+        <div class="overview-map-wrap">
+          <div class="overview-map-aura" aria-hidden="true"></div>
+          <div class="overview-map-grid" aria-hidden="true"></div>
+          <div class="overview-map-figure">
+            <img class="overview-map-image" src="images/transparent-topography.png" alt="云南高原湖泊地形图">
+            <div class="overview-hotspot-layer" aria-label="九大高原湖泊定位">
+              <button class="overview-lake-point" style="--x: 40.64%; --y: 21.78%;" data-lake="泸沽湖" aria-label="泸沽湖定位点">
+                <span class="overview-lake-tooltip">泸沽湖</span>
+              </button>
+              <button class="overview-lake-point" style="--x: 35.5%; --y: 43.48%;" data-lake="洱海" aria-label="洱海定位点">
+                <span class="overview-lake-tooltip">洱海</span>
+              </button>
+              <button class="overview-lake-point" style="--x: 44.29%; --y: 31.24%;" data-lake="程海" aria-label="程海定位点">
+                <span class="overview-lake-tooltip">程海</span>
+              </button>
+              <button class="overview-lake-point" style="--x: 55.17%; --y: 54.81%;" data-lake="滇池" aria-label="滇池定位点">
+                <span class="overview-lake-tooltip">滇池</span>
+              </button>
+              <button class="overview-lake-point" style="--x: 57.16%; --y: 53.42%;" data-lake="阳宗海" aria-label="阳宗海定位点">
+                <span class="overview-lake-tooltip">阳宗海</span>
+              </button>
+              <button class="overview-lake-point" style="--x: 56.37%; --y: 58.25%;" data-lake="抚仙湖" aria-label="抚仙湖定位点">
+                <span class="overview-lake-tooltip">抚仙湖</span>
+              </button>
+              <button class="overview-lake-point" style="--x: 55.75%; --y: 60.52%;" data-lake="星云湖" aria-label="星云湖定位点">
+                <span class="overview-lake-tooltip">星云湖</span>
+              </button>
+              <button class="overview-lake-point" style="--x: 55.35%; --y: 63.2%;" data-lake="杞麓湖" aria-label="杞麓湖定位点">
+                <span class="overview-lake-tooltip">杞麓湖</span>
+              </button>
+              <button class="overview-lake-point" style="--x: 53.19%; --y: 67.65%;" data-lake="异龙湖" aria-label="异龙湖定位点">
+                <span class="overview-lake-tooltip">异龙湖</span>
+              </button>
+            </div>
+          </div>
+          <div class="overview-waterline" aria-hidden="true">
+            <span class="overview-water-ripple ripple-a"></span>
+            <span class="overview-water-ripple ripple-b"></span>
+            <span class="overview-water-mist"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="overview-stats-carousel">
+        <div class="overview-stats-viewport" id="overviewStatsViewport">
+          <div class="stats-grid overview-stats-grid" id="statsGrid">
+            <button class="stat-card overview-stat-card" data-source="云南省水利厅、云南省统计局" data-detail="九大高原湖泊流域面积 8110 平方公里，占云南省面积约 2.05%，却承载着极高密度的人口与发展活动。">
+              <div class="stat-label-top">空间尺度</div>
+              <div class="stat-number"><span class="stat-count" data-target="8110">0</span><span class="stat-unit">km²</span></div>
+              <div class="stat-label">流域面积</div>
+              <div class="stat-sublabel">九颗“明珠”共同伸展的湖岸地带</div>
+            </button>
+            <button class="stat-card overview-stat-card" data-source="云南省水利厅、云南省统计局" data-detail="九大高原湖泊流域面积仅占云南省面积 2.05%，是典型的小尺度承载高强度开发空间。">
+              <div class="stat-label-top">土地占比</div>
+              <div class="stat-number"><span class="stat-count" data-target="2.05">0</span><span class="stat-unit">%</span></div>
+              <div class="stat-label">云南省面积</div>
+              <div class="stat-sublabel">面积不大，却集中承接最复杂的人地关系</div>
+            </button>
+            <button class="stat-card overview-stat-card" data-source="云南省统计局" data-detail="九湖流域养活了全省七分之一以上人口，多民族村镇、产业带和城市发展带沿湖分布。">
+              <div class="stat-label-top">人口承载</div>
+              <div class="stat-number"><span class="stat-unit">超</span><span class="stat-count" data-target="14.3">0</span><span class="stat-unit">%</span></div>
+              <div class="stat-label">全省人口</div>
+              <div class="stat-sublabel">汉族、白族、彝族、纳西族、摩梭人等依湖而居</div>
+            </button>
+            <button class="stat-card overview-stat-card" data-source="云南省统计局" data-detail="九湖流域贡献了全省四分之一以上 GDP，生态保护与经济发展长期在同一空间内拉扯。">
+              <div class="stat-label-top">经济分量</div>
+              <div class="stat-number"><span class="stat-count" data-target="25">0</span><span class="stat-unit">%</span></div>
+              <div class="stat-label">全省 GDP</div>
+              <div class="stat-sublabel">四分之一以上经济总量压缩在 2.05% 的土地上</div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <section class="overview-text-page" id="ethnicTextPage" aria-labelledby="ethnicTextTitle">
+        <div class="overview-text-page-inner">
+          <p class="overview-text-blur blur-reveal" id="ethnicTextTitle" data-blur-text="汉族、白族、彝族、纳西族、摩梭人等多个民族世代依湖而居，湖泊是他们共同的生计与家园。">汉族、白族、彝族、纳西族、摩梭人等多个民族世代依湖而居，湖泊是他们共同的生计与家园。</p>
+        </div>
+      </section>
+
+      <section class="overview-scroll-page" id="relationshipTextPage" aria-labelledby="relationshipTextTitle">
+        <div class="overview-scroll-page-inner relationship-quote-page">
+          <div class="relationship-quote-backdrop" aria-hidden="true"></div>
+          <div class="relationship-quote-overlay" aria-hidden="true"></div>
+          <div class="relationship-quote-content">
+            <p class="relationship-quote-line">但是，人与湖的关系，一度失衡。</p>
+            <p class="relationship-quote-line">改变高原湖泊，从来不只是工程问题。</p>
+            <p class="relationship-quote-line">沿湖而居的人们开始“退”。</p>
+            <p class="relationship-quote-line">退鱼塘、退农田、退经营空间。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="overview-video-page" id="questionVideoPage" aria-labelledby="questionVideoTitle">
+        <div class="overview-video-stage">
+          <video class="overview-video-bg" autoplay muted loop playsinline preload="auto">
+            <source src="./images/question-bg.mp4" type="video/mp4">
+          </video>
+          <div class="overview-video-overlay" aria-hidden="true"></div>
+          <div class="overview-video-aura" aria-hidden="true"></div>
+          <div class="overview-video-copy">
+            <p class="overview-video-line split-text-line" id="questionVideoTitle">不同民族、不同职业的人。</p>
+            <p class="overview-video-line split-text-line">开始共同面对一个问题。</p>
+            <p class="overview-video-line split-text-line">守护这片湖，要付出什么？</p>
+            <p class="overview-video-line split-text-line">又换回了什么？</p>
+          </div>
+          <div class="overview-video-hint" aria-hidden="true">
+            <span class="overview-video-hint-label">鼠标悬浮</span>
+            <span class="overview-video-hint-copy">移动光标，触发文字显现</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter-portal-page" id="chapterPortalPage" aria-labelledby="chapterPortalTitle">
+        <div class="chapter-portal-stage">
+          <video class="chapter-portal-video" autoplay muted loop playsinline preload="auto">
+            <source src="./images/chapter-one-bg.mp4" type="video/mp4">
+          </video>
+          <div class="chapter-portal-overlay" aria-hidden="true"></div>
+          <div class="chapter-portal-aura" aria-hidden="true"></div>
+          <div class="chapter-portal-content">
+            <div class="chapter-portal-kicker">第一章</div>
+            <h2 class="chapter-portal-title" id="chapterPortalTitle">九湖安澜，系于何处？</h2>
+            <p class="chapter-portal-quote">天下安澜，比屋可封。</p>
+            <div class="chapter-portal-body">
+              <p>古人以水之安宁，比喻天下之太平。在古人看来，水不兴波作浪，百姓才能安居乐业——“安澜”从来不只是水利概念，而是关乎天下苍生的政治理想。</p>
+              <p>“九湖安澜”，正是将这份千年的治水理想，投射到云南九大高原湖泊之上。</p>
+            </div>
+            <div class="chapter-portal-actions">
+              <button class="chapter-portal-btn" data-target="economicValuePage">经济价值</button>
+              <button class="chapter-portal-btn" data-target="ecologicalValuePage">生态价值</button>
+              <button class="chapter-portal-btn" data-target="culturalValuePage">文化价值</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter-value-page hover-reveal-stage" id="economicValuePage" aria-labelledby="economicValueTitle">
+        <div class="chapter-value-shell">
+          <div class="chapter-value-heading reveal-on-scroll reveal-soft" style="transition-delay:0.05s;">
+            <div class="chapter-value-label">经济价值</div>
+            <h2 class="chapter-value-title" id="economicValueTitle">2.05%的土地，承载着特殊的重量。</h2>
+            <p class="chapter-value-lead">流域内人口超过700万人，占全省人口总数的七分之一以上；国内生产总值占全省四分之一以上；工业增加值占全省五分之一以上。</p>
+          </div>
+
+          <div class="chapter-value-metrics">
+            <article class="chapter-metric-card reveal-on-scroll" style="transition-delay:0.12s;">
+              <span class="chapter-metric-eyebrow">人口承载</span>
+              <div class="chapter-metric-value">700<span>万+</span></div>
+              <p>流域内人口超过 700 万人，占全省人口总数七分之一以上。</p>
+            </article>
+            <article class="chapter-metric-card reveal-on-scroll" style="transition-delay:0.22s;">
+              <span class="chapter-metric-eyebrow">经济总量</span>
+              <div class="chapter-metric-value">25<span>%+</span></div>
+              <p>国内生产总值占全省四分之一以上，经济活动高度集聚。</p>
+            </article>
+            <article class="chapter-metric-card reveal-on-scroll" style="transition-delay:0.32s;">
+              <span class="chapter-metric-eyebrow">工业增加值</span>
+              <div class="chapter-metric-value">20<span>%+</span></div>
+              <p>工业增加值占全省五分之一以上，是工业化的重要承载区。</p>
+            </article>
+          </div>
+
+          <div class="chapter-value-grid">
+            <div class="chapter-value-copy reveal-on-scroll reveal-left" style="transition-delay:0.14s;">
+              <p>这里是云南的粮食主产区，是城市化、工业化的聚集区，是云南人口最密集、人类活动最频繁、经济发展最集中的区域。</p>
+              <p>九湖流域经济总量、城市规模、人口数量仍保持增长势头。这片土地在为全省创造巨大经济效益的同时，全省经济活动造成的环境影响近三分之一由九湖流域的生态系统来承担。</p>
+              <div class="chapter-value-closing">
+                <p class="chapter-value-highlight shiny-text-inline" data-shiny-speed="5.6" data-shiny-delay="1.1"><span>九湖虽小，</span><span>分量极重。</span></p>
+              </div>
+            </div>
+
+            <div class="chapter-value-visuals">
+              <figure class="chapter-visual chapter-visual-rice reveal-on-scroll reveal-scale" style="transition-delay:0.18s;">
+                <img src="images/chapter1-rice.png" alt="稻田">
+                <figcaption>粮食主产区</figcaption>
+              </figure>
+              <figure class="chapter-visual chapter-visual-city chapter-visual-city-a reveal-on-scroll reveal-right" style="transition-delay:0.28s;">
+                <img src="images/chapter1-city-1.png" alt="城市高楼">
+                <figcaption>城市化</figcaption>
+              </figure>
+              <figure class="chapter-visual chapter-visual-city chapter-visual-city-b reveal-on-scroll reveal-right" style="transition-delay:0.38s;">
+                <img src="images/chapter1-city-2.png" alt="城市夜景高楼">
+                <figcaption>工业化</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter-value-page chapter-value-page-eco hover-reveal-stage" id="ecologicalValuePage" aria-labelledby="ecologicalValueTitle">
+        <div class="chapter-value-shell chapter-value-shell-eco">
+          <div class="chapter-value-heading chapter-value-heading-eco reveal-on-scroll reveal-soft" style="transition-delay:0.05s;">
+            <div class="chapter-value-label">生态价值</div>
+            <h2 class="chapter-value-title" id="ecologicalValueTitle">一湖清水，关乎的不仅是云南，更是国家的水安全战略。</h2>
+            <p class="chapter-value-lead">在九湖之中，抚仙湖的分量尤为特殊。它既是我国蓄水量最大的深水型淡水湖泊，也是珠江源头第一大湖，更被列为国家重要淡水资源战略储备库。</p>
+          </div>
+
+          <div class="chapter-eco-layout">
+            <div class="chapter-eco-main">
+              <figure class="chapter-eco-hero reveal-on-scroll reveal-scale" style="transition-delay:0.16s;">
+                <img src="images/chapter1-eco-lake.png" alt="抚仙湖湖面">
+                <figcaption>抚仙湖至今总体保持Ⅰ类水质，是九湖生态价值的核心样本。</figcaption>
+              </figure>
+
+              <div class="chapter-eco-copy reveal-on-scroll reveal-left" style="transition-delay:0.24s;">
+                <p>抚仙湖蓄水量达 <strong>206.2 亿立方米</strong>，占全国淡水湖泊总蓄水量的 <strong>9.16%</strong>。更关键的是水质——抚仙湖至今总体保持 <strong>Ⅰ类水质</strong>，占全国 62 个国控重点湖泊中Ⅰ类湖泊水量的 <strong>90% 以上</strong>。</p>
+                <p>不仅如此，云南重点高原湖泊流域单位面积生态系统生产总值（GEP）是全国均值的 <strong>6.5 倍</strong>，人均 GEP 达全国均值的 <strong>1.5 倍</strong>。流域生态产品价值中，调节服务价值最高，约占 GEP 总量的 <strong>58%</strong>，文化服务功能突出，价值高于全国平均水平 <strong>25 个百分点</strong>。</p>
+                <p>九湖流域 GEP 与 GDP 比值（绿金比）为 <strong>0.78</strong>，普遍高于中部和东部较发达省份。清水资源、生态调节与文化服务，在这里被压缩进同一个流域单元。</p>
+              </div>
+            </div>
+
+            <aside class="chapter-eco-side">
+              <article class="chapter-eco-stat reveal-on-scroll reveal-right" style="transition-delay:0.18s;">
+                <span class="chapter-eco-stat-label">蓄水量</span>
+                <div class="chapter-eco-stat-value">206.2<span>亿 m³</span></div>
+                <p>我国蓄水量最大的深水型淡水湖泊。</p>
+              </article>
+              <article class="chapter-eco-stat reveal-on-scroll reveal-right" style="transition-delay:0.24s;">
+                <span class="chapter-eco-stat-label">全国占比</span>
+                <div class="chapter-eco-stat-value">9.16<span>%</span></div>
+                <p>占全国淡水湖泊总蓄水量的比重。</p>
+              </article>
+              <article class="chapter-eco-stat reveal-on-scroll reveal-right" style="transition-delay:0.3s;">
+                <span class="chapter-eco-stat-label">水质等级</span>
+                <div class="chapter-eco-stat-value">Ⅰ<span>类</span></div>
+                <p>全国 62 个国控重点湖泊中Ⅰ类湖泊水量 90% 以上来自抚仙湖。</p>
+              </article>
+              <article class="chapter-eco-stat reveal-on-scroll reveal-right" style="transition-delay:0.36s;">
+                <span class="chapter-eco-stat-label">单位面积 GEP</span>
+                <div class="chapter-eco-stat-value">6.5<span>倍</span></div>
+                <p>云南重点高原湖泊流域单位面积生态系统生产总值是全国均值的 6.5 倍。</p>
+              </article>
+              <article class="chapter-eco-stat reveal-on-scroll reveal-right" style="transition-delay:0.42s;">
+                <span class="chapter-eco-stat-label">调节服务</span>
+                <div class="chapter-eco-stat-value">58<span>%</span></div>
+                <p>占流域生态产品价值总量比重最高。</p>
+              </article>
+              <article class="chapter-eco-stat reveal-on-scroll reveal-right" style="transition-delay:0.48s;">
+                <span class="chapter-eco-stat-label">绿金比</span>
+                <div class="chapter-eco-stat-value">0.78</div>
+                <p>GEP 与 GDP 的比值，普遍高于中东部较发达省份。</p>
+              </article>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter-value-page chapter-value-page-culture hover-reveal-stage" id="culturalValuePage" aria-labelledby="culturalValueTitle">
+        <div class="chapter-value-shell chapter-value-shell-culture">
+          <div class="chapter-value-heading chapter-value-heading-culture reveal-on-scroll reveal-soft" style="transition-delay:0.05s;">
+            <div class="chapter-value-label">文化价值</div>
+            <h2 class="chapter-value-title" id="culturalValueTitle">九湖不仅是生态资源、经济资源，更是文化资源。</h2>
+            <p class="chapter-value-lead">湖泊塑造的不只是水系与生计，也塑造了命名、信仰与共同记忆。白族、摩梭人、彝族等民族，将对家园的理解写进湖名，也把生活秩序安放在湖岸边。</p>
+          </div>
+
+          <div class="chapter-culture-layout">
+            <article class="chapter-culture-feature reveal-on-scroll reveal-left" style="transition-delay:0.14s;">
+              <div class="chapter-culture-feature-copy">
+                <span class="chapter-culture-feature-label">人文母题</span>
+                <h3>湖泊是家园，也是语言、神话与族群记忆的容器。</h3>
+                <p>从“母亲湖”到“神圣的生命之水”，九湖流域的文化表达并不抽象，它们直接嵌入了各民族对自然的命名方式、生活伦理与家园想象之中。</p>
+              </div>
+            </article>
+
+            <div class="chapter-culture-grid">
+              <article class="chapter-culture-card reveal-on-scroll reveal-right" style="transition-delay:0.18s;">
+                <figure class="chapter-culture-media">
+                  <img src="images/图片 5.png" alt="洱海湖面">
+                </figure>
+                <div class="chapter-culture-card-body">
+                  <div class="chapter-culture-card-head">
+                    <span class="chapter-culture-lake">洱海</span>
+                    <span class="chapter-culture-ethnic">白族</span>
+                  </div>
+                  <p>洱海是大理白族人民的“母亲湖”。白族先祖把对海的向往加之于湖，因其形如人耳，称之为洱海。环洱海流域的历史，见证并记录着这块土地上各民族的和谐共生。</p>
+                </div>
+              </article>
+
+              <article class="chapter-culture-card reveal-on-scroll reveal-right" style="transition-delay:0.28s;">
+                <figure class="chapter-culture-media">
+                  <img src="images/图片 7.png" alt="泸沽湖湖面">
+                </figure>
+                <div class="chapter-culture-card-body">
+                  <div class="chapter-culture-card-head">
+                    <span class="chapter-culture-lake">泸沽湖</span>
+                    <span class="chapter-culture-ethnic">摩梭人</span>
+                  </div>
+                  <p>泸沽湖被当地摩梭人奉为“母亲湖”，摩梭语称“谢纳米”，意为“母湖”。湖水与族群生活紧密相连，也承载着母系文化语境中最深的家园认同。</p>
+                </div>
+              </article>
+
+              <article class="chapter-culture-card reveal-on-scroll reveal-right" style="transition-delay:0.38s;">
+                <figure class="chapter-culture-media">
+                  <img src="images/图片 8.png" alt="异龙湖湖面">
+                </figure>
+                <div class="chapter-culture-card-body">
+                  <div class="chapter-culture-card-head">
+                    <span class="chapter-culture-lake">异龙湖</span>
+                    <span class="chapter-culture-ethnic">彝族</span>
+                  </div>
+                  <p>异龙湖彝语称为“邑罗黑”，意思是“神圣的生命之水”。它承载着彝族人民对自然神灵的敬畏，也寄托着对风调雨顺、生生不息的美好祈愿。</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter-reflection-page hover-reveal-stage" id="guardianshipPage" aria-labelledby="guardianshipTitle">
+        <div class="chapter-reflection-shell">
+          <div class="chapter-reflection-copy">
+            <p class="chapter-reflection-line chapter-reflection-line-xl reveal-on-scroll reveal-soft" style="transition-delay:0.08s;" id="guardianshipTitle">守护九湖，守护的从来不只是水。</p>
+            <p class="chapter-reflection-line chapter-reflection-line-sm reveal-on-scroll" style="transition-delay:0.18s;">守护的是云南发展的根基。</p>
+            <p class="chapter-reflection-line chapter-reflection-line-sm reveal-on-scroll" style="transition-delay:0.26s;">是数百万人的家园。</p>
+            <p class="chapter-reflection-line chapter-reflection-line-sm reveal-on-scroll" style="transition-delay:0.34s;">是下游数亿人的水源。</p>
+            <p class="chapter-reflection-line chapter-reflection-line-sm reveal-on-scroll" style="transition-delay:0.42s;">是多民族共同的精神原乡。</p>
+            <p class="chapter-reflection-line chapter-reflection-line-xl chapter-reflection-line-end reveal-on-scroll reveal-soft" style="transition-delay:0.54s;">九湖安澜，系于此处。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter-portal-page chapter-portal-page-two hover-reveal-stage" id="chapterTwoPortalPage" aria-labelledby="chapterTwoPortalTitle">
+        <div class="chapter-portal-stage chapter-portal-stage-two">
+          <video class="chapter-portal-video chapter-portal-video-two" autoplay muted loop playsinline preload="auto">
+            <source src="./images/chapter-two-cover.mp4" type="video/mp4">
+          </video>
+          <div class="chapter-portal-overlay chapter-portal-overlay-two" aria-hidden="true"></div>
+          <div class="chapter-portal-aura chapter-portal-aura-two" aria-hidden="true"></div>
+          <div class="chapter-portal-content chapter-portal-content-two reveal-on-scroll reveal-soft" style="transition-delay:0.06s;">
+            <div class="chapter-portal-kicker">第二章</div>
+            <h2 class="chapter-portal-title chapter-portal-title-two" id="chapterTwoPortalTitle">天赐明珠，也有脆弱时</h2>
+            <p class="chapter-portal-quote chapter-portal-quote-two">然珠玉在掌，温润亦易碎。</p>
+            <div class="chapter-portal-body chapter-portal-body-two">
+              <p>云南是长江上游的生态屏障，这一位置决定了它们与平原湖泊有着本质不同——水体置换缓慢，生态脆弱且自我修复能力弱，一丝扰动便牵动下游，是这片屏障上最需要被读懂的部分。</p>
+            </div>
+            <div class="chapter-portal-actions chapter-portal-actions-two reveal-on-scroll" style="transition-delay:0.18s;">
+              <button class="chapter-portal-btn chapter-portal-btn-two chapter-portal-btn-two-a" data-target="innateWeaknessPage">先天之弱</button>
+              <button class="chapter-portal-btn chapter-portal-btn-two chapter-portal-btn-two-b" data-target="pressure">后天之压</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter-innate-page hover-reveal-stage" id="innateWeaknessPage" aria-labelledby="innateWeaknessTitle">
+        <div class="chapter-innate-shell">
+          <div class="chapter-innate-head">
+            <div class="chapter-innate-kicker reveal-on-scroll reveal-soft" style="transition-delay:0.04s;">第二章 · 先天之弱</div>
+            <h2 class="chapter-innate-title reveal-on-scroll reveal-soft" id="innateWeaknessTitle" style="transition-delay:0.1s;">一、先天之弱：封闭的水盆，只进不出</h2>
+          </div>
+
+          <div class="chapter-innate-top">
+            <div class="chapter-innate-copy reveal-on-scroll reveal-left" style="transition-delay:0.14s;">
+              <p>打个比方：流动的江河像<span>“活水”</span>，污染物进来能被冲走、稀释；而高原湖泊像一个<span>“封闭的水盆”</span>，污染物进来就出不去，只能越积越浓。</p>
+              <p>且由于高海拔地区的降水量和蒸发量有较大差距，导致高原湖泊的换水周期长、自净能力弱，生态一旦遭到破坏，治理修复难度很大。</p>
+              <p class="chapter-innate-bridge">每个湖的“换水周期”，就是它最直观的脆弱指数。水的更新速度，是高原湖泊天生的脆弱刻度。</p>
+            </div>
+
+            <div class="chapter-innate-video-card reveal-on-scroll reveal-right" style="transition-delay:0.2s;">
+              <div class="chapter-innate-video-frame">
+                <video autoplay muted loop playsinline preload="auto">
+                  <source src="./images/chapter-two-flow.mp4" type="video/mp4">
+                </video>
+              </div>
+              <p class="chapter-innate-video-caption">活水可以冲刷与稀释，封闭的湖盆却只能把负荷留在体内。</p>
+            </div>
+          </div>
+
+          <div class="chapter-innate-middle">
+            <div class="chapter-innate-cycles reveal-on-scroll reveal-scale" style="transition-delay:0.08s;">
+              <div class="chapter-innate-cycles-head">
+                <span class="chapter-innate-cycles-label">换水周期对比</span>
+                <p>更新越慢，生态越脆弱；一旦被污染，修复周期就越漫长。</p>
+              </div>
+              <div class="chapter-innate-cycle-chart" aria-label="九湖换水周期对比图">
+                <div class="chapter-innate-cycle-row is-major" style="--bar-width: 100%;">
+                  <div class="chapter-innate-cycle-meta">
+                    <span class="chapter-innate-cycle-lake">抚仙湖</span>
+                    <span class="chapter-innate-cycle-years">167 年</span>
+                  </div>
+                  <div class="chapter-innate-cycle-bar"><span></span></div>
+                  <p>我国蓄水量最大的深水型淡水湖泊，理论换水周期长达 167 年。</p>
+                </div>
+                <div class="chapter-innate-cycle-row" style="--bar-width: 16.8%;">
+                  <div class="chapter-innate-cycle-meta">
+                    <span class="chapter-innate-cycle-lake">程海</span>
+                    <span class="chapter-innate-cycle-years">约 28 年</span>
+                  </div>
+                  <div class="chapter-innate-cycle-bar"><span></span></div>
+                  <p>封闭性强，更新缓慢，自净能力有限。</p>
+                </div>
+                <div class="chapter-innate-cycle-row" style="--bar-width: 13.8%;">
+                  <div class="chapter-innate-cycle-meta">
+                    <span class="chapter-innate-cycle-lake">泸沽湖</span>
+                    <span class="chapter-innate-cycle-years">约 23 年</span>
+                  </div>
+                  <div class="chapter-innate-cycle-bar"><span></span></div>
+                  <p>生态稳定，但对外来干扰高度敏感。</p>
+                </div>
+                <div class="chapter-innate-cycle-row" style="--bar-width: 6%;">
+                  <div class="chapter-innate-cycle-meta">
+                    <span class="chapter-innate-cycle-lake">阳宗海</span>
+                    <span class="chapter-innate-cycle-years">约 10 年</span>
+                  </div>
+                  <div class="chapter-innate-cycle-bar"><span></span></div>
+                  <p>一旦出问题，治理周期长、代价高。</p>
+                </div>
+                <div class="chapter-innate-cycle-row is-focus" style="--bar-width: 2.4%;">
+                  <div class="chapter-innate-cycle-meta">
+                    <span class="chapter-innate-cycle-lake">滇池</span>
+                    <span class="chapter-innate-cycle-years">约 4 年</span>
+                  </div>
+                  <div class="chapter-innate-cycle-bar"><span></span></div>
+                  <p>典型的半封闭宽浅型高原湖泊，入湖水量少，平均 4 年才能置换一次。</p>
+                </div>
+                <div class="chapter-innate-cycle-row is-focus" style="--bar-width: 1.8%;">
+                  <div class="chapter-innate-cycle-meta">
+                    <span class="chapter-innate-cycle-lake">洱海</span>
+                    <span class="chapter-innate-cycle-years">约 3 年</span>
+                  </div>
+                  <div class="chapter-innate-cycle-bar"><span></span></div>
+                  <p>出流口多为一条、出口浅狭，污染物一旦进入仍极易滞留于湖内。</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chapter-innate-lake-panel reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">
+              <article class="chapter-innate-lake-card">
+                <div class="chapter-innate-lake-name">抚仙湖</div>
+                <div class="chapter-innate-lake-value">167<span>年</span></div>
+                <p>蓄水量最大的深水型淡水湖泊，理论换水周期几乎要跨越两个世纪。</p>
+              </article>
+              <article class="chapter-innate-lake-card">
+                <div class="chapter-innate-lake-name">滇池</div>
+                <div class="chapter-innate-lake-value">4<span>年</span></div>
+                <p>刘永定认为：“换水周期慢，也使滇池治理的难度要比其他湖泊大得多。”</p>
+              </article>
+              <article class="chapter-innate-lake-card">
+                <div class="chapter-innate-lake-name">洱海</div>
+                <div class="chapter-innate-lake-value">3<span>年</span></div>
+                <p>周期相对较短，但高原湖泊单一浅狭的出流口结构，仍让污染物难以快速排散。</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="chapter-innate-bottom">
+            <figure class="chapter-innate-evidence reveal-on-scroll reveal-left" style="transition-delay:0.12s;">
+              <img src="images/图片 9.png" alt="高原湖泊脆弱性资料图">
+            </figure>
+            <div class="chapter-innate-conclusion reveal-on-scroll reveal-right" style="transition-delay:0.2s;">
+              <p>这些湖泊，有的换一次水要等上百年甚至两百年，有的蒸发量远大于补水量，有的污染后治理费用高达数十亿且无经验可循。</p>
+              <p class="chapter-innate-conclusion-strong">它们天生就“伤不起”。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="section pressure-section chapter-pressure-page hover-reveal-stage" id="pressure" aria-labelledby="pressureTitle">
+    <div class="chapter-pressure-shell">
+      <div class="chapter-pressure-gridline" aria-hidden="true"></div>
+
+      <div class="chapter-pressure-head">
+        <div class="chapter-pressure-kicker reveal-on-scroll reveal-soft" style="transition-delay:0.04s;">第二章 · 后天之压</div>
+        <h2 class="chapter-pressure-title reveal-on-scroll reveal-soft" id="pressureTitle" style="transition-delay:0.1s;">二、后天之压：最脆弱的湖，扛着最重的担</h2>
+        <p class="chapter-pressure-lead reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">九大高原湖泊流域面积仅占全省 2%，却是全省人口最密集、经济最活跃、粮食生产最集中的区域，集中了全省七分之一以上人口，贡献了约四分之一的地区生产总值。流域经济总量、城市规模、人口数量仍保持增长势头。</p>
+      </div>
+
+      <div class="chapter-pressure-overview">
+        <div class="chapter-pressure-core reveal-on-scroll reveal-left" style="transition-delay:0.12s;">
+          <div class="chapter-pressure-core-label">湖泊很小，负担极大</div>
+          <div class="chapter-pressure-core-number">2<span>%</span></div>
+          <p>流域面积只占全省约 2%，却承接了最密集的人口、最集中的发展活动与最高频的人类干预。</p>
+        </div>
+
+        <div class="chapter-pressure-metrics reveal-on-scroll reveal-right" style="transition-delay:0.2s;">
+          <article class="chapter-pressure-metric metric-pop">
+            <span class="chapter-pressure-metric-label">人口负荷</span>
+            <strong>1/7+</strong>
+            <p>承载全省七分之一以上人口</p>
+          </article>
+          <article class="chapter-pressure-metric metric-gdp">
+            <span class="chapter-pressure-metric-label">经济浓度</span>
+            <strong>1/4+</strong>
+            <p>贡献约四分之一地区生产总值</p>
+          </article>
+          <article class="chapter-pressure-metric metric-growth">
+            <span class="chapter-pressure-metric-label">增长趋势</span>
+            <strong>持续上扬</strong>
+            <p>人口、产业、城镇规模仍在增长</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="chapter-pressure-flow reveal-on-scroll reveal-scale" style="transition-delay:0.1s;">
+        <div class="chapter-pressure-flow-head">
+          <p>人口在增长，产业在发展，城镇在扩张。</p>
+          <span>但湖泊只有那么大，自净能力有限。</span>
+        </div>
+        <div class="chapter-pressure-flow-track">
+          <div class="chapter-pressure-flow-node">
+            <span class="chapter-pressure-node-key">A</span>
+            <strong>人口增长</strong>
+          </div>
+          <div class="chapter-pressure-flow-beam"></div>
+          <div class="chapter-pressure-flow-node">
+            <span class="chapter-pressure-node-key">B</span>
+            <strong>产业发展</strong>
+          </div>
+          <div class="chapter-pressure-flow-beam"></div>
+          <div class="chapter-pressure-flow-node">
+            <span class="chapter-pressure-node-key">C</span>
+            <strong>城镇扩张</strong>
+          </div>
+          <div class="chapter-pressure-flow-beam is-alert"></div>
+          <div class="chapter-pressure-flow-node is-lake">
+            <span class="chapter-pressure-node-key">湖</span>
+            <strong>有限湖体</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-pressure-cards">
+        <article class="chapter-pressure-card reveal-on-scroll reveal-left" style="transition-delay:0.08s;">
+          <div class="chapter-pressure-card-top">
+            <span class="chapter-pressure-card-index">01</span>
+            <span class="chapter-pressure-card-tag">空间挤压</span>
+          </div>
+          <h3>围湖开发强度大</h3>
+          <p>长期以来，环湖开发持续挤压湖泊生态空间。湖岸线被生产、经营、建设不断逼近，生态缓冲带越来越窄。</p>
+          <blockquote>“湖泊治理本身是一项需长期坚持的工作，加上高原九湖流域生态脆弱，抗干扰和自我修复能力都不强，保护、治理、修复任务更加艰巨。”</blockquote>
+          <div class="chapter-pressure-card-source">云南省水利厅河长处 杨玉春</div>
+        </article>
+
+        <article class="chapter-pressure-card reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">
+          <div class="chapter-pressure-card-top">
+            <span class="chapter-pressure-card-index">02</span>
+            <span class="chapter-pressure-card-tag">污染累积</span>
+          </div>
+          <h3>截污治污不彻底</h3>
+          <p>九大高原湖泊流域多为农业密集区，化肥、农药施用率高，农业面源污染重；同时，截污治污不到位的问题长期存在。</p>
+          <div class="chapter-pressure-loads" aria-hidden="true">
+            <span>化肥</span>
+            <span>农药</span>
+            <span>面源污染</span>
+            <span>截污缺口</span>
+          </div>
+        </article>
+
+        <article class="chapter-pressure-card reveal-on-scroll reveal-right" style="transition-delay:0.24s;">
+          <div class="chapter-pressure-card-top">
+            <span class="chapter-pressure-card-index">03</span>
+            <span class="chapter-pressure-card-tag">旅游压力</span>
+          </div>
+          <h3>旅游压力持续增大</h3>
+          <p>以抚仙湖为例，一级保护区内曾居住着近 3 万人，且游客人数增长较快。快速增加的入湖污染负荷，使湖泊水体总氮平均值已经接近临界值。</p>
+          <div class="chapter-pressure-tourism">
+            <span class="chapter-pressure-tourism-value">近 3 万人</span>
+            <span class="chapter-pressure-tourism-note">一级保护区曾居住人口</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="chapter-pressure-summary reveal-on-scroll reveal-soft" style="transition-delay:0.14s;">
+        <p class="chapter-pressure-summary-line">人口负荷大、围湖开发强度大、农业面源污染重、截污治污不到位。</p>
+        <p class="chapter-pressure-summary-line-small">这些后天压力叠加在先天脆弱的湖泊之上，让治理变成了一场与时间赛跑的硬仗。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-hard-page hover-reveal-stage" id="hardQuestionPage" aria-labelledby="hardQuestionTitle">
+    <div class="chapter-hard-shell">
+      <div class="chapter-hard-aura" aria-hidden="true"></div>
+      <div class="chapter-hard-copy">
+        <p class="chapter-hard-line chapter-hard-line-xl reveal-on-scroll reveal-soft" style="transition-delay:0.08s;" id="hardQuestionTitle">守护九湖，难在哪？</p>
+        <p class="chapter-hard-line chapter-hard-line-sm reveal-on-scroll" style="transition-delay:0.18s;">不是“治理”，不是“改善”。</p>
+        <p class="chapter-hard-line chapter-hard-line-lg reveal-on-scroll reveal-soft" style="transition-delay:0.28s;">而是“革命”。</p>
+        <p class="chapter-hard-line chapter-hard-line-sm reveal-on-scroll" style="transition-delay:0.38s;">因为要改变的，不仅是湖水。</p>
+        <p class="chapter-hard-line chapter-hard-line-sm reveal-on-scroll" style="transition-delay:0.46s;">更是几十年形成的生产生活方式。</p>
+        <p class="chapter-hard-line chapter-hard-line-sm reveal-on-scroll" style="transition-delay:0.54s;">发展观念和治理格局。</p>
+        <p class="chapter-hard-line chapter-hard-line-end reveal-on-scroll reveal-soft" style="transition-delay:0.66s;">守护它们，从来不是一件容易的事。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-portal-page chapter-portal-page-three hover-reveal-stage" id="chapterThreePortalPage" aria-labelledby="chapterThreePortalTitle">
+    <div class="chapter-portal-stage chapter-portal-stage-three">
+      <video class="chapter-portal-video chapter-portal-video-three" autoplay muted loop playsinline preload="auto">
+        <source src="./images/chapter-three-cover.mp4" type="video/mp4">
+      </video>
+      <div class="chapter-portal-overlay chapter-portal-overlay-three" aria-hidden="true"></div>
+      <div class="chapter-portal-aura chapter-portal-aura-three" aria-hidden="true"></div>
+      <div class="chapter-portal-content chapter-portal-content-three reveal-on-scroll reveal-soft" style="transition-delay:0.06s;">
+        <div class="chapter-portal-kicker">第三章</div>
+        <h2 class="chapter-portal-title chapter-portal-title-three" id="chapterThreePortalTitle">十年治湖，一场向水而行的变革</h2>
+        <p class="chapter-portal-quote chapter-portal-quote-three">面对天生的脆弱与后天的重压，该如何破局？</p>
+        <div class="chapter-portal-body chapter-portal-body-three">
+          <p>云南给出了一个掷地有声的回答——“湖泊革命”。</p>
+          <p>“革命”二字，意味着这不是小修小补，不是常规治理，而是一场触及理念、制度、行动的根本性变革。</p>
+          <p>十年间，治湖思路完成了一次深刻跃迁——从“一湖之治”到“流域之治”，再到“全域联治”。这是一场从认知到实践的系统性重构。</p>
+        </div>
+        <div class="chapter-portal-actions chapter-portal-actions-three reveal-on-scroll" style="transition-delay:0.18s;">
+          <button class="chapter-portal-btn chapter-portal-btn-three chapter-portal-btn-three-a" data-target="waterUpgradePage">一、全省水环境：一场持续十年的跃升</button>
+          <button class="chapter-portal-btn chapter-portal-btn-three chapter-portal-btn-three-b" data-target="lakesReportPage">二、九湖交卷：从劣Ⅴ类到全面向好</button>
+          <button class="chapter-portal-btn chapter-portal-btn-three chapter-portal-btn-three-c" data-target="ecologyRepairPage">三、生态修复：退出来的空间，正在被生命填满</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-water-page hover-reveal-stage" id="waterUpgradePage" aria-labelledby="waterUpgradeTitle">
+    <div class="chapter-water-shell">
+      <div class="chapter-water-heading">
+        <div class="chapter-water-label reveal-on-scroll reveal-soft" style="transition-delay:0.04s;">一、全省水环境</div>
+        <h2 class="chapter-water-title reveal-on-scroll reveal-soft" id="waterUpgradeTitle" style="transition-delay:0.1s;">一场持续十年的跃升</h2>
+        <p class="chapter-water-lead reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">十年来，云南省水生态环境质量持续改善，地表水国控断面好Ⅲ类水质比例由 2015 年的 62.3% 上升到 2025 年的 94.1%。六大水系出境跨界断面水质常年稳定保持Ⅱ类及以上。</p>
+      </div>
+
+      <div class="chapter-water-hero">
+        <div class="chapter-water-curve reveal-on-scroll reveal-left" style="transition-delay:0.12s;">
+          <div class="chapter-water-curve-head">
+            <span>国控断面优良比例</span>
+            <strong><span class="count-up" data-count-to="94.1" data-decimals="1">0</span><em>%</em></strong>
+          </div>
+          <div class="chapter-water-progress" aria-hidden="true">
+            <div class="chapter-water-progress-track">
+              <div class="chapter-water-progress-fill" style="--fill: 94.1%;"></div>
+              <span class="chapter-water-progress-marker marker-start">2015 · 62.3%</span>
+              <span class="chapter-water-progress-marker marker-end">2025 · 94.1%</span>
+            </div>
+          </div>
+          <p>从 62.3% 到 94.1%，十年里云南地表水国控断面优良比例显著抬升，意味着全省水环境底盘被系统性托起。</p>
+        </div>
+
+        <div class="chapter-water-statboard reveal-on-scroll reveal-right" style="transition-delay:0.2s;">
+          <article class="chapter-water-stat">
+            <span class="chapter-water-stat-label">2025 年优良断面</span>
+            <strong><span class="count-up" data-count-to="470" data-decimals="0">0</span><em>个</em></strong>
+            <p>508 个国家层面和省级层面断面中，优良断面达 470 个，占 <span class="count-up inline" data-count-to="92.5" data-decimals="1">0</span>%</p>
+          </article>
+          <article class="chapter-water-stat">
+            <span class="chapter-water-stat-label">劣Ⅴ类断面</span>
+            <strong><span class="count-up" data-count-to="2" data-decimals="0">0</span><em>个</em></strong>
+            <p>劣Ⅴ类断面下降到仅 2 个，水质底部风险被持续压缩。</p>
+          </article>
+          <article class="chapter-water-stat">
+            <span class="chapter-water-stat-label">主要湖库优良比例</span>
+            <strong><span class="count-up" data-count-to="85.6" data-decimals="1">0</span><em>%</em></strong>
+            <p>全省 90 个主要湖库水质优良比例达到 85.6%。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="chapter-water-grid">
+        <article class="chapter-water-panel reveal-on-scroll reveal-left" style="transition-delay:0.1s;">
+          <div class="chapter-water-panel-head">
+            <span class="chapter-water-panel-kicker">系统指标</span>
+            <h3>“十四五”期间，继续向上</h3>
+          </div>
+          <div class="chapter-water-dual">
+            <div class="chapter-water-dual-card">
+              <span>优良比例</span>
+              <div class="chapter-water-dual-value"><span class="count-up" data-count-to="89.6" data-decimals="1">0</span>% → <span class="count-up" data-count-to="94.1" data-decimals="1">0</span>%</div>
+              <p>由 2021 年的 89.6% 提升至 2025 年的 94.1%</p>
+            </div>
+            <div class="chapter-water-dual-card is-risk">
+              <span>劣Ⅴ类比例</span>
+              <div class="chapter-water-dual-value"><span class="count-up" data-count-to="2.5" data-decimals="1">0</span>% → <span class="count-up" data-count-to="0.5" data-decimals="1">0</span>%</div>
+              <p>由 2.5% 下降至 0.5%</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter-water-panel reveal-on-scroll reveal-right" style="transition-delay:0.18s;">
+          <div class="chapter-water-panel-head">
+            <span class="chapter-water-panel-kicker">水系表现</span>
+            <h3>六大水系与跨界断面全面稳住</h3>
+          </div>
+          <ul class="chapter-water-list">
+            <li><strong>六大水系</strong><span>水质全部为优</span></li>
+            <li><strong>41 条河流</strong><span>出境、跨界河流纳入监测</span></li>
+            <li><strong>49 个断面</strong><span>全部达到Ⅰ—Ⅱ类标准</span></li>
+            <li><strong>长期稳定</strong><span>出境跨界断面常年保持Ⅱ类及以上</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-lakes-report-page hover-reveal-stage" id="lakesReportPage" aria-labelledby="lakesReportTitle">
+    <div class="chapter-lakes-report-shell">
+      <div class="chapter-lakes-report-heading">
+        <div class="chapter-lakes-report-label reveal-on-scroll reveal-soft" style="transition-delay:0.04s;">二、九湖交卷</div>
+        <h2 class="chapter-lakes-report-title reveal-on-scroll reveal-soft" id="lakesReportTitle" style="transition-delay:0.1s;">从劣Ⅴ类到全面向好</h2>
+        <p class="chapter-lakes-report-lead reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">九大高原湖泊保护治理取得标志性成效。滇池、星云湖、杞麓湖、异龙湖成功摘除劣Ⅴ类帽子，抚仙湖、泸沽湖持续守住Ⅰ类，洱海、阳宗海、程海也在各自脆弱条件下稳步向好。</p>
+      </div>
+
+      <div class="chapter-lakes-report-top">
+        <article class="chapter-lakes-score reveal-on-scroll reveal-left" style="transition-delay:0.08s;">
+          <span class="chapter-lakes-score-kicker">标志性成效</span>
+          <div class="chapter-lakes-score-main">
+            <strong><span class="count-up chapter-lakes-count" data-count-to="4" data-decimals="0">0</span></strong>
+            <div>
+              <h3>四湖摘掉劣Ⅴ类帽子</h3>
+              <p>滇池、星云湖、杞麓湖、异龙湖，完成了九湖治理最具标志性的阶段性跨越。</p>
+            </div>
+          </div>
+          <div class="chapter-lakes-chip-row">
+            <span>滇池</span>
+            <span>星云湖</span>
+            <span>杞麓湖</span>
+            <span>异龙湖</span>
+          </div>
+        </article>
+
+        <article class="chapter-lakes-snapshot reveal-on-scroll reveal-right" style="transition-delay:0.16s;">
+          <div class="chapter-lakes-mini-stat">
+            <strong><span class="count-up" data-count-to="81.8" data-decimals="1">0</span>%</strong>
+            <span>滇池入湖河道优良率</span>
+          </div>
+          <div class="chapter-lakes-mini-stat">
+            <strong><span class="count-up" data-count-to="27" data-decimals="0">0</span>条</strong>
+            <span>滇池Ⅰ—Ⅲ类河道</span>
+          </div>
+          <div class="chapter-lakes-mini-stat">
+            <strong><span class="count-up" data-count-to="9" data-decimals="0">0</span>个月</strong>
+            <span>异龙湖连续脱劣</span>
+          </div>
+          <div class="chapter-lakes-mini-stat">
+            <strong><span class="count-up" data-count-to="3" data-decimals="0">0</span>年</strong>
+            <span>阳宗海连续Ⅱ类</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="chapter-lakes-dianchi">
+        <div class="chapter-lakes-dianchi-copy reveal-on-scroll reveal-left" style="transition-delay:0.08s;">
+          <div class="chapter-lakes-section-kicker">滇池</div>
+          <h3>1993 年以来最好的一年</h3>
+          <p>2025 年，滇池全湖水质为Ⅳ类。外海水质从多年的Ⅴ类提升为Ⅳ类；全湖总磷由Ⅳ类提升为Ⅲ类，为 1993 年以来第一次。制约滇池进一步提升的关键指标，已从 3 个降至 2 个。</p>
+
+          <div class="chapter-lakes-metric-board">
+            <div class="chapter-lakes-metric-row">
+              <div class="chapter-lakes-metric-head">
+                <span>化学需氧量</span>
+                <strong><span class="count-up" data-count-to="27" data-decimals="1">0</span> mg/L</strong>
+              </div>
+              <div class="chapter-lakes-bar-track">
+                <div class="chapter-lakes-bar-fill" style="--bar-fill: 82%;"></div>
+              </div>
+              <p>同比 29.4mg/L 好转 <em>8.2%</em></p>
+            </div>
+
+            <div class="chapter-lakes-metric-row">
+              <div class="chapter-lakes-metric-head">
+                <span>总磷</span>
+                <strong><span class="count-up" data-count-to="0.05" data-decimals="3">0</span> mg/L</strong>
+              </div>
+              <div class="chapter-lakes-bar-track">
+                <div class="chapter-lakes-bar-fill is-gold" style="--bar-fill: 68%;"></div>
+              </div>
+              <p>同比 0.073mg/L 好转 <em>31.5%</em></p>
+            </div>
+
+            <div class="chapter-lakes-metric-row">
+              <div class="chapter-lakes-metric-head">
+                <span>高锰酸盐指数</span>
+                <strong><span class="count-up" data-count-to="6.4" data-decimals="1">0</span> mg/L</strong>
+              </div>
+              <div class="chapter-lakes-bar-track">
+                <div class="chapter-lakes-bar-fill" style="--bar-fill: 76%;"></div>
+              </div>
+              <p>同比 6.8mg/L 好转 <em>5.9%</em></p>
+            </div>
+
+            <div class="chapter-lakes-metric-row">
+              <div class="chapter-lakes-metric-head">
+                <span>叶绿素 a</span>
+                <strong><span class="count-up" data-count-to="0.062" data-decimals="3">0</span> mg/L</strong>
+              </div>
+              <div class="chapter-lakes-bar-track">
+                <div class="chapter-lakes-bar-fill" style="--bar-fill: 72%;"></div>
+              </div>
+              <p>同比 0.075mg/L 好转 <em>17.3%</em></p>
+            </div>
+
+            <div class="chapter-lakes-metric-row">
+              <div class="chapter-lakes-metric-head">
+                <span>透明度</span>
+                <strong><span class="count-up" data-count-to="0.69" data-decimals="2">0</span> 米</strong>
+              </div>
+              <div class="chapter-lakes-bar-track">
+                <div class="chapter-lakes-bar-fill is-bright" style="--bar-fill: 91%;"></div>
+              </div>
+              <p>同比 0.41 米好转 <em>68.3%</em></p>
+            </div>
+          </div>
+
+          <div class="chapter-lakes-dianchi-note">
+            <span>35 条主要入湖河道水质达标率 <strong>100%</strong></span>
+            <span>其中 27 条达到Ⅰ—Ⅲ类</span>
+            <span>全湖综合营养状态由中度富营养好转为轻度富营养</span>
+          </div>
+        </div>
+
+        <figure class="chapter-lakes-dianchi-media reveal-on-scroll reveal-right" style="transition-delay:0.18s;">
+          <img src="images/图片 10.png" alt="滇池">
+          <figcaption>滇池外海水质由多年Ⅴ类提升为Ⅳ类，2025 年创 1993 年以来最好水平。</figcaption>
+        </figure>
+      </div>
+
+      <div class="chapter-lakes-grid">
+        <article class="chapter-lake-card chapter-lake-card-wide reveal-on-scroll reveal-left" style="transition-delay:0.08s;">
+          <div class="chapter-lake-card-head">
+            <span class="chapter-lake-card-tag">Ⅰ类稳定</span>
+            <h3>抚仙湖</h3>
+          </div>
+          <p>除 2018 年、2022 年因总磷波动短暂降至Ⅱ类外，其余年份均达Ⅰ类。抚仙湖总体保持Ⅰ类水质稳定态势，是国家重要淡水资源战略储备库。</p>
+        </article>
+
+        <article class="chapter-lake-card reveal-on-scroll reveal-soft" style="transition-delay:0.14s;">
+          <div class="chapter-lake-card-head">
+            <span class="chapter-lake-card-tag">Ⅰ类常守</span>
+            <h3>泸沽湖</h3>
+          </div>
+          <p>2015 年至今持续保持Ⅰ类，水质全省最优，2022 年入选全国“美丽河湖”优秀案例。</p>
+        </article>
+
+        <article class="chapter-lake-card reveal-on-scroll reveal-right" style="transition-delay:0.2s;">
+          <div class="chapter-lake-card-head">
+            <span class="chapter-lake-card-tag">Ⅲ类稳定</span>
+            <h3>洱海</h3>
+          </div>
+          <p>水质总体稳定在Ⅲ类，“洱海指数”评价为优。海菜花大面积重现，27 条主要入湖河流水质优良率持续稳定保持 100%。</p>
+        </article>
+
+        <article class="chapter-lake-photo-card reveal-on-scroll reveal-left" style="transition-delay:0.06s;">
+          <div class="chapter-lake-photo-media">
+            <img src="images/图片 11.png" alt="阳宗海">
+          </div>
+          <div class="chapter-lake-photo-body">
+            <div class="chapter-lake-card-head">
+              <span class="chapter-lake-card-tag">砷浓度显著下降</span>
+              <h3>阳宗海</h3>
+            </div>
+            <p>通过多年治理，砷浓度显著下降，自 2016 年起稳定Ⅲ类，2022 年提升至Ⅱ类，全湖平均水质连续三年达Ⅱ类。</p>
+          </div>
+        </article>
+
+        <article class="chapter-lake-photo-card reveal-on-scroll reveal-soft" style="transition-delay:0.14s;">
+          <div class="chapter-lake-photo-media">
+            <img src="images/图片 13.png" alt="程海">
+          </div>
+          <div class="chapter-lake-photo-body">
+            <div class="chapter-lake-card-head">
+              <span class="chapter-lake-card-tag">阶段跃升</span>
+              <h3>程海</h3>
+            </div>
+            <p>自 2015 年以来稳定Ⅳ类，2025 年 1—3 月提升至Ⅲ类，说明治理效应开始实质性显现。</p>
+          </div>
+        </article>
+
+        <article class="chapter-lake-photo-card reveal-on-scroll reveal-right" style="transition-delay:0.22s;">
+          <div class="chapter-lake-photo-media">
+            <img src="images/图片 12.png" alt="星云湖">
+          </div>
+          <div class="chapter-lake-photo-body">
+            <div class="chapter-lake-card-head">
+              <span class="chapter-lake-card-tag">成功脱劣</span>
+              <h3>星云湖</h3>
+            </div>
+            <p>长期受内源污染和水资源短缺制约，2015 年以来多数年份为Ⅴ类—劣Ⅴ类。2025 年水质为Ⅴ类，已成功摘除劣Ⅴ类帽子。</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="chapter-lakes-bottom">
+        <article class="chapter-lake-photo-card chapter-lake-photo-card-wide reveal-on-scroll reveal-left" style="transition-delay:0.08s;">
+          <div class="chapter-lake-photo-media">
+            <img src="images/图片 14.png" alt="杞麓湖">
+          </div>
+          <div class="chapter-lake-photo-body">
+            <div class="chapter-lake-card-head">
+              <span class="chapter-lake-card-tag">连续 6 年后脱劣</span>
+              <h3>杞麓湖</h3>
+            </div>
+            <p>湖心国控点、全湖平均水质类别由 2019 年至 2024 年连续 6 年的劣Ⅴ类，提升至 2025 年的Ⅴ类。湖心国控点化学需氧量均值由 41.2mg/L 降至 34.2mg/L，降幅达 17.0%；全湖化学需氧量均值由 44.5mg/L 降至 35.9mg/L，降幅达 19.3%。</p>
+            <div class="chapter-lakes-inline-metrics">
+              <span>湖心 CODcr：<strong>41.2 → 34.2</strong></span>
+              <span>全湖 CODcr：<strong>44.5 → 35.9</strong></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter-lake-card chapter-lake-card-compact reveal-on-scroll reveal-right" style="transition-delay:0.18s;">
+          <div class="chapter-lake-card-head">
+            <span class="chapter-lake-card-tag">9 个月脱劣</span>
+            <h3>异龙湖</h3>
+          </div>
+          <p>2025 年连续 9 个月实现水质脱劣，全年国控断面化学需氧量均值稳定达到Ⅴ类标准。12 月 CODcr 值为 32.5mg/L，全年均值为 38.83mg/L。</p>
+          <div class="chapter-lakes-yilong-metrics">
+            <div>
+              <strong><span class="count-up" data-count-to="32.5" data-decimals="1">0</span></strong>
+              <span>12 月 CODcr</span>
+            </div>
+            <div>
+              <strong><span class="count-up" data-count-to="38.83" data-decimals="2">0</span></strong>
+              <span>全年均值</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-ecology-page hover-reveal-stage" id="ecologyRepairPage" aria-labelledby="ecologyRepairTitle">
+    <div class="chapter-ecology-shell">
+      <div class="chapter-ecology-heading">
+        <div class="chapter-ecology-label reveal-on-scroll reveal-soft" style="transition-delay:0.04s;">三、生态修复</div>
+        <h2 class="chapter-ecology-title reveal-on-scroll reveal-soft" id="ecologyRepairTitle" style="transition-delay:0.1s;">退出来的空间，正在被生命填满</h2>
+        <p class="chapter-ecology-lead reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">十年治湖，不只是把污染控住，更是把生态空间重新还给湿地、森林、湖滨带与水源涵养区。退出的岸线与土地，正在被新的生命秩序重新占据。</p>
+      </div>
+
+      <div class="chapter-ecology-top">
+        <article class="chapter-ecology-feature reveal-on-scroll reveal-left" style="transition-delay:0.08s;">
+          <span class="chapter-ecology-kicker">湿地修复</span>
+          <div class="chapter-ecology-feature-main">
+            <strong><span class="count-up" data-count-to="10.66" data-decimals="2">0</span><em>亿元</em></strong>
+            <p>十年来，云南累计争取和下达中央湿地项目资金 10.66 亿元，为湖滨湿地保护与修复持续注入硬支撑。</p>
+          </div>
+          <div class="chapter-ecology-feature-grid">
+            <div>
+              <strong><span class="count-up" data-count-to="160" data-decimals="0">0</span></strong>
+              <span>个湿地项目</span>
+            </div>
+            <div>
+              <strong><span class="count-up" data-count-to="15" data-decimals="0">0</span>万+</strong>
+              <span>亩退化湿地修复</span>
+            </div>
+            <div>
+              <strong><span class="count-up" data-count-to="6" data-decimals="0">0</span>万+</strong>
+              <span>亩生态补偿完成</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter-ecology-rings reveal-on-scroll reveal-right" style="transition-delay:0.16s;">
+          <div class="chapter-ecology-ring-card">
+            <div class="chapter-ecology-ring" style="--ring-percent: 30;">
+              <span><span class="count-up" data-count-to="30" data-decimals="0">0</span>%</span>
+            </div>
+            <div class="chapter-ecology-ring-copy">
+              <h3>生态保护红线</h3>
+              <p>划定生态保护红线 <strong><span class="count-up" data-count-to="11.35" data-decimals="2">0</span>万平方千米</strong>，约占全省国土面积的 30%。</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chapter-ecology-middle">
+        <article class="chapter-ecology-panel reveal-on-scroll reveal-left" style="transition-delay:0.1s;">
+          <div class="chapter-ecology-panel-head">
+            <span class="chapter-ecology-kicker">山水林田湖草</span>
+            <h3>抚仙湖、洱海一体化保护修复</h3>
+          </div>
+          <p>实施抚仙湖、洱海山水林田湖草一体化保护和修复工程，保护修复流域面积 <strong><span class="count-up" data-count-to="231" data-decimals="0">0</span>万亩</strong>，新增水源涵养面积 <strong><span class="count-up" data-count-to="13" data-decimals="0">0</span>万亩</strong>。</p>
+          <div class="chapter-ecology-bars">
+            <div class="chapter-ecology-bar-item">
+              <div class="chapter-ecology-bar-head">
+                <span>保护修复流域面积</span>
+                <strong>231 万亩</strong>
+              </div>
+              <div class="chapter-ecology-bar-track">
+                <div class="chapter-ecology-bar-fill is-wide" style="--eco-fill: 100%;"></div>
+              </div>
+            </div>
+            <div class="chapter-ecology-bar-item">
+              <div class="chapter-ecology-bar-head">
+                <span>新增水源涵养面积</span>
+                <strong>13 万亩</strong>
+              </div>
+              <div class="chapter-ecology-bar-track">
+                <div class="chapter-ecology-bar-fill is-bright" style="--eco-fill: 42%;"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter-ecology-panel reveal-on-scroll reveal-right" style="transition-delay:0.18s;">
+          <div class="chapter-ecology-panel-head">
+            <span class="chapter-ecology-kicker">森林云南</span>
+            <h3>更大的生态底盘正在抬升</h3>
+          </div>
+          <p>深入推进“森林云南”建设，累计完成营造林 <strong><span class="count-up" data-count-to="6994.75" data-decimals="2">0</span>万亩</strong>，森林覆盖率提升至 <strong><span class="count-up" data-count-to="57.9" data-decimals="1">0</span>%</strong>。</p>
+          <div class="chapter-ecology-forest">
+            <div class="chapter-ecology-forest-value">
+              <strong><span class="count-up" data-count-to="57.9" data-decimals="1">0</span>%</strong>
+              <span>森林覆盖率</span>
+            </div>
+            <div class="chapter-ecology-forest-track">
+              <div class="chapter-ecology-forest-fill" style="--forest-fill: 57.9%;"></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chapter-ecology-bottom">
+        <article class="chapter-ecology-summary reveal-on-scroll reveal-soft" style="transition-delay:0.12s;">
+          <p class="chapter-ecology-summary-line">湿地、湖滨带、山体与森林，不再只是湖泊外围的背景。</p>
+          <p class="chapter-ecology-summary-line">它们正在重新成为九湖水质向好的基础设施。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-people-page hover-reveal-stage" id="peopleAnswerPage" aria-labelledby="peopleAnswerTitle">
+    <div class="chapter-people-shell">
+      <div class="chapter-people-backdrop" aria-hidden="true"></div>
+      <div class="chapter-people-copy" id="peopleAnswerTitle">
+        <p class="chapter-people-line chapter-people-line-lg reveal-on-scroll reveal-soft" style="transition-delay:0.05s;">守护九湖，难在哪？</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.13s;">十年前。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.19s;">星云湖、杞麓湖、异龙湖是劣Ⅴ类。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.25s;">滇池外海是Ⅴ类。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.31s;">十年后。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.37s;">四个湖泊均摘掉了劣Ⅴ类的帽子。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.43s;">滇池达到 1993 年以来最好水平。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.49s;">抚仙湖、泸沽湖坚守着Ⅰ类的最高标准。</p>
+        <p class="chapter-people-line chapter-people-line-lg reveal-on-scroll reveal-soft" style="transition-delay:0.58s;">十年，九湖，一场系统性变革。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.66s;">最终让这一切运转起来的。</p>
+        <p class="chapter-people-line chapter-people-line-xl reveal-on-scroll reveal-soft" style="transition-delay:0.78s;">是活生生的人。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-portal-page chapter-portal-page-four hover-reveal-stage" id="chapterFourPortalPage" aria-labelledby="chapterFourPortalTitle">
+    <div class="chapter-portal-stage chapter-portal-stage-four">
+      <video class="chapter-portal-video chapter-portal-video-four" autoplay muted loop playsinline preload="auto">
+        <source src="./images/chapter-four-cover.mp4" type="video/mp4">
+      </video>
+      <div class="chapter-portal-overlay chapter-portal-overlay-four" aria-hidden="true"></div>
+      <div class="chapter-portal-aura chapter-portal-aura-four" aria-hidden="true"></div>
+      <div class="chapter-portal-content chapter-portal-content-four reveal-on-scroll reveal-soft" style="transition-delay:0.06s;">
+        <div class="chapter-portal-kicker">第四章</div>
+        <h2 class="chapter-portal-title chapter-portal-title-four" id="chapterFourPortalTitle">一湖之水，万家之责</h2>
+        <p class="chapter-portal-quote chapter-portal-quote-four">她弯下腰，捡起的是一桶牛粪；她直起身，守护的是一个洱海。</p>
+        <div class="chapter-portal-actions chapter-portal-actions-four reveal-on-scroll" style="transition-delay:0.18s;">
+          <button class="chapter-portal-btn chapter-portal-btn-four chapter-portal-btn-four-a" data-target="liChunxiPage">一、“奖章不是我一个人的，是属于无数个‘李春喜’的。”——“牛粪金花”李春喜</button>
+          <button class="chapter-portal-btn chapter-portal-btn-four chapter-portal-btn-four-b" data-target="womenSalvagePage">二、“母亲干不动了，女儿接着干。婆婆‘退休’了，媳妇接过网兜”——三代人的巾帼打捞队</button>
+          <button class="chapter-portal-btn chapter-portal-btn-four chapter-portal-btn-four-c" data-target="chenJingPage">三、“从0.128到0.029，从40亿到4900万”——陈景院士与阳宗海：74岁的“跨界”奇迹</button>
+          <button class="chapter-portal-btn chapter-portal-btn-four chapter-portal-btn-four-d" data-target="chengjiangGuardiansPage">四、澄江市：1620名志愿者的“高原湖泊卫士”</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-story-page hover-reveal-stage" id="liChunxiPage" aria-labelledby="liChunxiTitle">
+    <div class="chapter-story-shell">
+      <div class="chapter-story-grid">
+        <div class="chapter-story-hero reveal-on-scroll reveal-left" style="transition-delay:0.08s;">
+          <figure class="chapter-story-hero-media chapter-story-hero-media-main">
+            <img src="images/图片 15.png" alt="李春喜人物照片">
+          </figure>
+          <figure class="chapter-story-hero-media chapter-story-hero-media-side">
+            <img src="images/图片 16.png" alt="李春喜工作近景">
+          </figure>
+          <div class="chapter-story-hero-caption">
+            <span>洱海源头生态保护一线</span>
+            <strong>“牛粪金花”李春喜</strong>
+          </div>
+        </div>
+
+        <div class="chapter-story-copy">
+          <div class="chapter-story-head reveal-on-scroll reveal-soft" style="transition-delay:0.06s;">
+            <div class="chapter-story-kicker">第四章 · 人物故事 01</div>
+            <h2 class="chapter-story-title" id="liChunxiTitle">“奖章不是我一个人的，是属于无数个‘李春喜’的。”</h2>
+            <p class="chapter-story-subtitle">“牛粪金花”李春喜</p>
+          </div>
+
+          <div class="chapter-story-quote reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">
+            <p>她弯下腰，捡起的是一桶牛粪；她直起身，守护的是一个洱海。</p>
+          </div>
+
+          <div class="chapter-story-stats reveal-on-scroll reveal-soft" style="transition-delay:0.24s;">
+            <article>
+              <strong><span class="count-up" data-count-to="9" data-decimals="0">0</span>年</strong>
+              <span>持续收运畜禽粪便</span>
+            </article>
+            <article>
+              <strong><span class="count-up" data-count-to="200" data-decimals="0">0</span>+</strong>
+              <span>副防滑手套用坏</span>
+            </article>
+            <article>
+              <strong><span class="count-up" data-count-to="3.7" data-decimals="1">0</span>万公里</strong>
+              <span>累计行程超过</span>
+            </article>
+            <article>
+              <strong><span class="count-up" data-count-to="1.16" data-decimals="2">0</span>万余吨</strong>
+              <span>收集畜禽粪便</span>
+            </article>
+          </div>
+
+          <div class="chapter-story-body">
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.1s;">大理州洱源县凤羽镇，位置对洱海源头生态保护至关重要。但当地养牛户较为分散，要确保牛粪全部规范处理、不让污水流进洱海，只能靠畜禽粪便收集员挨家挨户收运。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">2016 年，李春喜主动报名，成为收集站里唯一的女性。弯腰、铲粪、提桶、举高、倒进车里，这样的动作她每天都要重复无数次。9 年里，她用坏了 200 多副防滑手套、更换了 4 辆三轮车，行程超过 3.7 万公里，收集畜禽粪便 1.16 万余吨。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.22s;">起初，并不是人人都能体谅她。她去吃酒席，凳子还未坐热，同桌的人嫌“有味儿”，纷纷离席。连儿子也曾担忧：“妈，咱家怕是讨不到媳妇了……”但 9 年过去，当年只有 6 户乡亲的试探性托付，如今化作 73 户村民把家门钥匙放心交给她。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.28s;">李春喜从小生长在白族村，平常交流都用白族语言，工作闲暇时还主动给村民宣传洱海保护知识。2024 年，她荣获全国五一劳动奖章；2025 年，获评全国劳动模范。她说：“奖章不是我一个人的，是属于无数个‘李春喜’的。”</p>
+          </div>
+
+          <div class="chapter-story-pull reveal-on-scroll reveal-right" style="transition-delay:0.3s;">
+            <p>“凤羽河从家门前流过，汇入洱海，如果牛粪没有人收，像之前一样堆在沟边，下雨就会冲进河里，洱海就会受到污染。”</p>
+            <p>“我只要活儿没干完，心里就不踏实。我想一直干到自己干不动的那天。”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-story-page chapter-story-page-legacy hover-reveal-stage" id="womenSalvagePage" aria-labelledby="womenSalvageTitle">
+    <div class="chapter-story-shell">
+      <div class="chapter-story-grid chapter-story-grid-legacy">
+        <div class="chapter-story-hero chapter-story-hero-legacy reveal-on-scroll reveal-left" style="transition-delay:0.06s;">
+          <figure class="chapter-story-hero-media chapter-story-hero-media-main chapter-story-hero-media-legacy-main">
+            <img src="images/图片 18.png" alt="三代人的巾帼打捞队合影">
+          </figure>
+          <figure class="chapter-story-hero-media chapter-story-hero-media-side chapter-story-hero-media-legacy-side">
+            <img src="images/图片 17.png" alt="巾帼打捞队在滇池水面巡护">
+          </figure>
+          <div class="chapter-story-hero-caption chapter-story-hero-caption-legacy">
+            <span>滇池边的三代守护者</span>
+            <strong>从铁皮船到无人机</strong>
+          </div>
+        </div>
+
+        <div class="chapter-story-copy chapter-story-copy-legacy">
+          <div class="chapter-story-head reveal-on-scroll reveal-soft" style="transition-delay:0.08s;">
+            <div class="chapter-story-kicker">第四章 · 人物故事 02</div>
+            <h2 class="chapter-story-title" id="womenSalvageTitle">“母亲干不动了，女儿接着干。婆婆‘退休’了，媳妇接过网兜”</h2>
+            <p class="chapter-story-subtitle">三代人的巾帼打捞队</p>
+          </div>
+
+          <div class="chapter-story-quote chapter-story-quote-legacy reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">
+            <p>从铁皮船到无人机，从网兜到声呐仪，装备在变，守护的决心从未改变。</p>
+          </div>
+
+          <div class="chapter-story-legacy-rail reveal-on-scroll reveal-soft" style="transition-delay:0.22s;">
+            <article>
+              <span>1988</span>
+              <strong>李云丽带领村里妇女组建巾帼打捞队，在发臭的湖面上坚持打捞。</strong>
+            </article>
+            <article>
+              <span>30 余年</span>
+              <strong>队员换了一批又一批，母亲、女儿、婆婆、媳妇把守湖这件事一代代接下去。</strong>
+            </article>
+            <article>
+              <span>2025.05.10</span>
+              <strong>巾帼打捞队升级为昆明首支“滇池应急救援民兵连”，守护方式迈向更专业的下一程。</strong>
+            </article>
+          </div>
+
+          <div class="chapter-story-body chapter-story-body-legacy">
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.1s;">1988 年，昆明滇池边的渔家妇女李云丽带领村里妇女组建巾帼打捞队，驾着渔船、手持网兜，在发臭的湖面上坚守。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">这支成立于 1988 年的打捞队，在昆明几乎无人不知。队长李云丽是一位朴实的渔家妇女，带领队员 30 余年义务为滇池打捞垃圾，被人们亲切地称为“滇池最美守护者”。每天清晨 7 点，身穿红马甲、手拿网兜、撑着铁皮船的巾帼打捞队队员开始了一天的工作。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.22s;">她们在河道里巡游，将垃圾、杂草、枯叶打捞上来，还不时向岸边游人普及环保知识。30 多年来，打捞队的队员换了一批又一批，母亲干不动了，女儿接着干；婆婆“退休”了，媳妇接过网兜。她们从花样年华走到花甲之年，将芳华许给了一汪清水。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.28s;">2025 年 5 月 10 日，历经三代人传承的巾帼打捞队升级为昆明首支“滇池应急救援民兵连”。年轻人带着无人机、快艇、声呐仪等装备，承接起应急救援、巡逻巡航、生态治理等更重任务。</p>
+          </div>
+
+          <div class="chapter-story-pull chapter-story-pull-legacy reveal-on-scroll reveal-right" style="transition-delay:0.34s;">
+            <p>她们守住的不是一项临时性的清理工作，而是一种代代相续的湖岸责任。</p>
+            <p>当工具从网兜换成声呐仪，滇池边的那份执拗与耐心，并没有变。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-story-page chapter-story-page-scientist hover-reveal-stage" id="chenJingPage" aria-labelledby="chenJingTitle">
+    <div class="chapter-story-shell">
+      <div class="chapter-story-grid chapter-story-grid-scientist">
+        <div class="chapter-scientist-poster reveal-on-scroll reveal-left" style="transition-delay:0.06s;">
+          <figure class="chapter-scientist-poster-card">
+            <img src="images/图片 19.png" alt="陈景院士海报">
+          </figure>
+          <div class="chapter-scientist-data-band">
+            <article>
+              <span>砷浓度</span>
+              <strong><span class="count-up" data-count-to="0.128" data-decimals="3">0</span> → <span class="count-up" data-count-to="0.029" data-decimals="3">0</span> mg/L</strong>
+            </article>
+            <article>
+              <span>治理成本</span>
+              <strong><span class="count-up" data-count-to="40" data-decimals="0">0</span>亿 → <span class="count-up" data-count-to="4900" data-decimals="0">0</span>万</strong>
+            </article>
+          </div>
+        </div>
+
+        <div class="chapter-story-copy chapter-story-copy-scientist">
+          <div class="chapter-story-head reveal-on-scroll reveal-soft" style="transition-delay:0.08s;">
+            <div class="chapter-story-kicker">第四章 · 人物故事 03</div>
+            <h2 class="chapter-story-title" id="chenJingTitle">“从 0.128 到 0.029，从 40 亿到 4900 万”</h2>
+            <p class="chapter-story-subtitle">陈景院士与阳宗海：74 岁的“跨界”奇迹</p>
+          </div>
+
+          <div class="chapter-story-quote chapter-story-quote-scientist reveal-on-scroll reveal-soft" style="transition-delay:0.15s;">
+            <p>一位科学家用数据改写了湖泊命运，也把“无解”的绝境，变成了可以被验证的方法。</p>
+          </div>
+
+          <div class="chapter-scientist-stage reveal-on-scroll reveal-soft" style="transition-delay:0.22s;">
+            <figure class="chapter-scientist-stage-photo">
+              <img src="images/图片 22.png" alt="陈景院士在阳宗海治理项目现场">
+            </figure>
+            <figure class="chapter-scientist-stage-photo">
+              <img src="images/图片 20.png" alt="陈景院士与团队在船上交流">
+            </figure>
+          </div>
+
+          <div class="chapter-story-body chapter-story-body-scientist">
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.12s;">2008 年，阳宗海砷浓度飙至 0.128mg/L，水质从Ⅱ类骤降为劣Ⅴ类。全球招标无人能解，预估治理费高达 40 至 70 亿元。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.18s;">云南大学 74 岁的冶金院士陈景跨界出手，4 个月研发出“原位治理技术”，仅用 2900 万元、两年时间让全湖砷浓度降至 0.049mg/L，恢复Ⅱ至Ⅲ类水质。二期治理后又进一步降至 0.029mg/L。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.24s;">2025 年，阳宗海入选国家“美丽河湖”优秀案例。2024 年，陈景院士逝世，享年 89 岁。留下来的，不只是论文和设备，更是一次科学介入现实的示范。</p>
+          </div>
+
+          <div class="chapter-story-pull chapter-story-pull-scientist reveal-on-scroll reveal-right" style="transition-delay:0.3s;">
+            <p>从 0.128 到 0.029，从 40 亿到 4900 万，数字不只是结果，也是这场“跨界”奇迹最有力的证词。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-story-page chapter-story-page-volunteer hover-reveal-stage" id="chengjiangGuardiansPage" aria-labelledby="chengjiangGuardiansTitle">
+    <div class="chapter-story-shell">
+      <div class="chapter-story-grid chapter-story-grid-volunteer">
+        <div class="chapter-story-copy chapter-story-copy-volunteer">
+          <div class="chapter-story-head reveal-on-scroll reveal-soft" style="transition-delay:0.08s;">
+            <div class="chapter-story-kicker">第四章 · 人物故事 04</div>
+            <h2 class="chapter-story-title" id="chengjiangGuardiansTitle">澄江市：1620 名志愿者的“高原湖泊卫士”</h2>
+            <p class="chapter-story-subtitle">一群人，把护湖变成了常态化的共同动作</p>
+          </div>
+
+          <div class="chapter-story-quote reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">
+            <p>200 余支队伍，1620 个名字，他们来自不同民族、不同年龄、不同职业，却穿着同样的红马甲，守护着同一片湖水。</p>
+          </div>
+
+          <div class="chapter-story-stats chapter-story-stats-volunteer reveal-on-scroll reveal-soft" style="transition-delay:0.22s;">
+            <article>
+              <strong><span class="count-up" data-count-to="200" data-decimals="0">0</span>+</strong>
+              <span>支志愿服务队</span>
+            </article>
+            <article>
+              <strong><span class="count-up" data-count-to="1620" data-decimals="0">0</span></strong>
+              <span>名老中青志愿者</span>
+            </article>
+            <article>
+              <strong><span class="count-up" data-count-to="1.5" data-decimals="1">0</span>万</strong>
+              <span>人次清河清漂行动</span>
+            </article>
+            <article>
+              <strong><span class="count-up" data-count-to="1.1" data-decimals="1">0</span>万吨</strong>
+              <span>淤泥垃圾及水生植物清理量</span>
+            </article>
+          </div>
+
+          <div class="chapter-story-body chapter-story-body-volunteer">
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.1s;">在抚仙湖畔的澄江市，一场全民护湖的行动正在展开。成立抚仙湖保护协会党支部，以“高原湖泊卫士”行动为统领，组建“银亮澄江”“仙湖巾帼”“仙湖河小青”等 200 余支、1620 名老中青志愿服务队。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">澄江市划定县乡村组四级湖泊保护治理责任网格，构建问题“一线主动排查、一线及时发现、一线合力解决”的工作闭环。常态化组织发动党员群众开展清河清漂行动 1.5 万人次，清理沟渠库塘 252 次、湿地 1791 亩、淤泥垃圾及水生植物 1.1 万吨。</p>
+            <p class="reveal-on-scroll reveal-soft" style="transition-delay:0.22s;">入汛以来，防汛抢险专家队和应急分队累计出动 160 余人次，排查隐患 300 余处，闸门巡检 200 余次，处置入湖雨水 318 万方、险情 11 起。</p>
+          </div>
+
+          <div class="chapter-story-pull reveal-on-scroll reveal-right" style="transition-delay:0.3s;">
+            <p>这里的“守湖”不再只是少数人的职业，而是被一整座城市接住的公共责任。</p>
+          </div>
+        </div>
+
+        <div class="chapter-volunteer-visual reveal-on-scroll reveal-right" style="transition-delay:0.06s;">
+          <figure class="chapter-volunteer-photo">
+            <img src="images/图片 21.png" alt="澄江市志愿者清理沟渠现场">
+          </figure>
+          <div class="chapter-volunteer-note">
+            <span>抚仙湖畔</span>
+            <strong>一线排查、一线发现、一线解决</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-people-page chapter-people-page-epilogue hover-reveal-stage" id="chapterFourClosurePage" aria-labelledby="chapterFourClosureTitle">
+    <div class="chapter-people-shell">
+      <div class="chapter-people-backdrop chapter-people-backdrop-epilogue" aria-hidden="true"></div>
+      <div class="chapter-people-copy chapter-people-copy-epilogue" id="chapterFourClosureTitle">
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.06s;">从洱海源头的白族村，到滇池水面的铁皮船。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.14s;">从阳宗海畔的实验室，到抚仙湖岸的红马甲。</p>
+        <p class="chapter-people-line chapter-people-line-lg reveal-on-scroll reveal-soft" style="transition-delay:0.24s;">从一个人到一群人。</p>
+        <p class="chapter-people-line chapter-people-line-xl reveal-on-scroll reveal-soft" style="transition-delay:0.34s;">从“他的湖”到“我们的湖”。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.44s;">不同民族，不同职业，不同年龄。</p>
+        <p class="chapter-people-line reveal-on-scroll reveal-soft" style="transition-delay:0.52s;">他们原本素不相识。</p>
+        <p class="chapter-people-line chapter-people-line-lg reveal-on-scroll reveal-soft" style="transition-delay:0.64s;">但因为同一片湖水。</p>
+        <p class="chapter-people-line chapter-people-line-xl reveal-on-scroll reveal-soft" style="transition-delay:0.76s;">他们走到了一起。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-portal-page chapter-portal-page-five hover-reveal-stage" id="chapterFivePortalPage" aria-labelledby="chapterFivePortalTitle">
+    <div class="chapter-portal-stage chapter-portal-stage-five">
+      <video class="chapter-portal-video chapter-portal-video-five" autoplay muted loop playsinline preload="auto">
+        <source src="./images/chapter-five-cover.mp4" type="video/mp4">
+      </video>
+      <div class="chapter-portal-overlay chapter-portal-overlay-five" aria-hidden="true"></div>
+      <div class="chapter-portal-aura chapter-portal-aura-five" aria-hidden="true"></div>
+      <div class="chapter-portal-content chapter-portal-content-five reveal-on-scroll reveal-soft" style="transition-delay:0.06s;">
+        <div class="chapter-portal-kicker">第五章</div>
+        <h2 class="chapter-portal-title chapter-portal-title-five" id="chapterFivePortalTitle">水清之后，看见“我们”</h2>
+        <p class="chapter-portal-quote chapter-portal-quote-five">水清了，花开了，鸟回来了，鱼多了……</p>
+        <div class="chapter-portal-actions chapter-portal-actions-five reveal-on-scroll" style="transition-delay:0.18s;">
+          <button class="chapter-portal-btn chapter-portal-btn-five chapter-portal-btn-five-a" data-target="ecoRevivalPage">一、生态之变：海菜花回来了</button>
+          <button class="chapter-portal-btn chapter-portal-btn-five chapter-portal-btn-five-b" data-target="productionShiftPage">二、生产之变：绿水青山正在变成金山银山</button>
+          <button class="chapter-portal-btn chapter-portal-btn-five chapter-portal-btn-five-c" data-target="lifeShiftPage">三、生活之变：从“不敢靠近”到“推窗见湖”</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-eco-page hover-reveal-stage" id="ecoRevivalPage" aria-labelledby="ecoRevivalTitle">
+    <div class="chapter-eco-shell">
+      <div class="chapter-eco-copy reveal-on-scroll reveal-soft" style="transition-delay:0.05s;">
+        <div class="chapter-eco-kicker">一、生态之变</div>
+        <h2 class="chapter-eco-title" id="ecoRevivalTitle">海菜花回来了</h2>
+        <p class="chapter-eco-lead">海菜花被称作“水质试金石”，只能生长在清洁水体中。上世纪80年代以来，它一度从滇池、洱海的湖面消失；而今天，随着生态修复推进，它重新开在水下，也重新开在云南高原湖泊的治理答卷里。</p>
+        <p class="chapter-eco-lead chapter-eco-lead-secondary">从海菜花到候鸟，从土著鱼类到湖滨湿地，生命正在重新占据那些被退出来、修复过、等待复苏的空间。</p>
+      </div>
+
+      <div class="chapter-eco-metrics">
+        <article class="chapter-eco-metric-card reveal-on-scroll" style="transition-delay:0.12s;">
+          <div class="chapter-eco-metric-icon">花</div>
+          <div class="chapter-eco-metric-label">洱海海菜花分布面积</div>
+          <div class="chapter-eco-metric-value"><span class="count-up" data-count-to="9" data-duration="1800">0</span><span class="chapter-eco-unit">万㎡</span> → <span class="count-up" data-count-to="76" data-duration="2200">0</span><span class="chapter-eco-unit">万㎡</span></div>
+          <p>2021年至2025年，达到有统计以来最大值。</p>
+        </article>
+        <article class="chapter-eco-metric-card reveal-on-scroll" style="transition-delay:0.18s;">
+          <div class="chapter-eco-metric-icon">透</div>
+          <div class="chapter-eco-metric-label">滇池东风坝水体透明度</div>
+          <div class="chapter-eco-metric-value"><span class="count-up" data-count-to="30" data-duration="1600">0</span><span class="chapter-eco-unit">cm</span> → <span class="count-up" data-count-to="165" data-duration="2200">0</span><span class="chapter-eco-unit">cm</span></div>
+          <p>生态修复完工后，水下可见度显著提高。</p>
+        </article>
+        <article class="chapter-eco-metric-card reveal-on-scroll" style="transition-delay:0.24s;">
+          <div class="chapter-eco-metric-icon">鸟</div>
+          <div class="chapter-eco-metric-label">滇池湖滨带生物恢复</div>
+          <div class="chapter-eco-metric-value"><span class="count-up" data-count-to="175" data-duration="2100">0</span><span class="chapter-eco-unit">种鸟类</span></div>
+          <p>其中水禽64种，国家Ⅱ级重点保护鸟类14种。</p>
+        </article>
+        <article class="chapter-eco-metric-card reveal-on-scroll" style="transition-delay:0.3s;">
+          <div class="chapter-eco-metric-icon">湿</div>
+          <div class="chapter-eco-metric-label">环滇池湿地植被覆盖率</div>
+          <div class="chapter-eco-metric-value"><span class="count-up" data-count-to="13.1" data-decimals="1" data-duration="1700">0</span><span class="chapter-eco-unit">%</span> → <span class="count-up" data-count-to="81" data-duration="2100">0</span><span class="chapter-eco-unit">%</span></div>
+          <p>从2007年的约13.1%提升至约81%。</p>
+        </article>
+      </div>
+
+      <div class="chapter-eco-stage">
+        <div class="chapter-eco-gallery-panel reveal-on-scroll reveal-soft" style="transition-delay:0.16s;">
+          <div class="chapter-eco-gallery-head">
+            <span>环形画廊</span>
+            <strong>左右拖动，悬浮查看那些重新回到湖里的生命</strong>
+          </div>
+          <div class="chapter-eco-gallery" id="ecoRingGallery" tabindex="0" role="region" aria-label="生态复苏图片环形画廊">
+            <div class="chapter-eco-gallery-glow" aria-hidden="true"></div>
+            <div class="chapter-eco-gallery-orbit" id="ecoRingOrbit">
+              <button class="chapter-eco-gallery-card is-selected" data-title="海菜花重现" data-meta="洱海：9万㎡ → 76万㎡" data-desc="海菜花只能生长在清洁水体中。它的大面积回归，是湖泊生态复苏最直观的体检报告。" data-accent="rgba(188, 255, 236, 0.92)">
+                <img src="images/图片 24.png" alt="海菜花重现">
+                <span>海菜花重现</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="修复后的草海岸线" data-meta="滇池：50万㎡生态隔离带" data-desc="东风坝生态修复工程构建生态隔离带，清理污染底泥，并建设同等面积沉水植物型人工湿地。" data-accent="rgba(155, 228, 255, 0.92)">
+                <img src="images/图片 25.png" alt="修复后的草海岸线">
+                <span>修复岸线</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="异龙湖候鸟归来" data-meta="2025年连续9个月水质脱劣" data-desc="水质改善后，候鸟用翅膀投票。异龙湖重新迎来红嘴鸥和一批越冬水禽。" data-accent="rgba(255, 231, 177, 0.92)">
+                <img src="images/图片 23.png" alt="异龙湖候鸟归来">
+                <span>候鸟归来</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="红嘴鸥先遣部队" data-meta="迁徙越冬候鸟持续到访" data-desc="刚进入冬天，红嘴鸥便率先飞抵异龙湖，成为水质脱劣后最醒目的生命信号之一。" data-accent="rgba(255, 212, 161, 0.92)">
+                <img src="images/图片 26.png" alt="红嘴鸥先遣部队">
+                <span>红嘴鸥</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="越冬水禽重回湖面" data-meta="白骨顶鸡、针尾鸭、琵嘴鸭等接踵而至" data-desc="候鸟种群的回归与增多，意味着湖滨湿地、浅水区和食物链结构正在一起修复。" data-accent="rgba(188, 221, 255, 0.92)">
+                <img src="images/图片 27.png" alt="越冬水禽重回湖面">
+                <span>越冬水禽</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="凤头潜鸭与湖面群落" data-meta="更多物种开始稳定利用修复后的栖息地" data-desc="不仅是单一物种回归，而是鸟类群落结构更完整，湖面生态循环也更稳定。" data-accent="rgba(221, 237, 255, 0.92)">
+                <img src="images/图片 28.png" alt="凤头潜鸭与湖面群落">
+                <span>群落复苏</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="湖滨湿地重新长回来" data-meta="环滇池湿地植被覆盖率：13.1% → 81%" data-desc="湖滨湿地重建，为水鸟、鱼类和沉水植物提供了共同的栖息与繁殖空间。" data-accent="rgba(193, 255, 216, 0.92)">
+                <img src="images/图片 31.png" alt="湖滨湿地重新长回来">
+                <span>湖滨湿地</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="滇池高背鲫等土著鱼恢复" data-meta="鱼类7目14科26种，恢复6种土著鱼类" data-desc="土著鱼类的恢复，说明修复并不止于“看起来变清”，而是水下生态位正在被重新填满。" data-accent="rgba(161, 229, 255, 0.92)">
+                <img src="images/图片 30.png" alt="滇池土著鱼类恢复">
+                <span>土著鱼类</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="银白鱼回到食物链中" data-meta="鱼多了，湖的生命层次也更完整" data-desc="鱼类数量和种群结构改善，意味着沉水植物、浮游生物与更高营养级正在重新连起来。" data-accent="rgba(206, 241, 255, 0.92)">
+                <img src="images/图片 32.png" alt="银白鱼回到食物链中">
+                <span>银白鱼</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="金线鲃等原生物种重现" data-meta="生命回归，是修复最诚实的回答" data-desc="当原生物种重新出现，意味着湖泊生态系统对本地生命的承载能力正在恢复。" data-accent="rgba(191, 255, 244, 0.92)">
+                <img src="images/图片 33.png" alt="金线鲃等原生物种重现">
+                <span>原生重现</span>
+              </button>
+              <button class="chapter-eco-gallery-card" data-title="修复后的湖面与花带" data-meta="2017年起，海菜花已在滇池自然生长" data-desc="时隔数十载，海菜花在滇池水域再次自然生长，成为治理历程中的标志性时刻。" data-accent="rgba(255, 248, 202, 0.92)">
+                <img src="images/图片 29.png" alt="修复后的湖面与花带">
+                <span>再次开花</span>
+              </button>
+            </div>
+            <div class="chapter-eco-gallery-center" id="ecoRingDetail">
+              <div class="chapter-eco-gallery-tag">生态回归</div>
+              <h3 class="chapter-eco-gallery-title" id="ecoRingDetailTitle">海菜花重现</h3>
+              <p class="chapter-eco-gallery-text" id="ecoRingDetailText">海菜花只能生长在清洁水体中。它的大面积回归，是湖泊生态复苏最直观的体检报告。</p>
+              <div class="chapter-eco-gallery-meta" id="ecoRingDetailMeta">洱海：9万㎡ → 76万㎡</div>
+              <div class="chapter-eco-gallery-tip">鼠标左右拖动 / 悬浮图片可切换内容</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chapter-eco-data-panel reveal-on-scroll reveal-soft" style="transition-delay:0.22s;">
+          <article class="chapter-eco-data-block">
+            <div class="chapter-eco-data-icon">修</div>
+            <div class="chapter-eco-data-copy">
+              <h3>东风坝修复，见效立竿见影</h3>
+              <p>2025年10月底完工后，东岸水面出现海菜花，透明度显著提升，沉水植物覆盖度超过60%。</p>
+              <div class="chapter-eco-data-strip">
+                <span><strong class="count-up" data-count-to="50" data-duration="1800">0</strong>万㎡生态隔离带</span>
+                <span><strong class="count-up" data-count-to="10" data-duration="1600">0</strong>万m³污染底泥清理</span>
+                <span><strong class="count-up" data-count-to="6" data-duration="1500">0</strong>种新增沉水植物</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="chapter-eco-data-block">
+            <div class="chapter-eco-data-icon">鸟</div>
+            <div class="chapter-eco-data-copy">
+              <h3>候鸟与鱼类，用生命给治理打分</h3>
+              <p>异龙湖水质脱劣后，红嘴鸥和一批越冬水禽持续到访；滇池湖滨带也重新记录到更完整的水鸟与鱼类系统。</p>
+              <div class="chapter-eco-data-strip">
+                <span><strong class="count-up" data-count-to="64" data-duration="1800">0</strong>种水禽</span>
+                <span><strong class="count-up" data-count-to="14" data-duration="1600">0</strong>种国家Ⅱ级重点保护鸟类</span>
+                <span><strong class="count-up" data-count-to="26" data-duration="1700">0</strong>种鱼类</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="chapter-eco-data-block">
+            <div class="chapter-eco-data-icon">湿</div>
+            <div class="chapter-eco-data-copy">
+              <h3>退出来的空间，正在被生命填满</h3>
+              <p>十年来，云南累计修复退化湿地15万余亩；抚仙湖、洱海山水林田湖草一体化工程保护修复流域面积231万亩，新增水源涵养面积13万亩。</p>
+              <div class="chapter-eco-bar-group">
+                <div class="chapter-eco-bar-row">
+                  <div class="chapter-eco-bar-label">修复退化湿地</div>
+                  <div class="chapter-eco-bar-track"><span class="chapter-eco-bar-fill" style="--eco-bar-fill:64%;"></span></div>
+                  <div class="chapter-eco-bar-value"><strong class="count-up" data-count-to="15" data-duration="1700">0</strong><span>万余亩</span></div>
+                </div>
+                <div class="chapter-eco-bar-row">
+                  <div class="chapter-eco-bar-label">保护修复流域面积</div>
+                  <div class="chapter-eco-bar-track"><span class="chapter-eco-bar-fill is-bright" style="--eco-bar-fill:100%;"></span></div>
+                  <div class="chapter-eco-bar-value"><strong class="count-up" data-count-to="231" data-duration="2200">0</strong><span>万亩</span></div>
+                </div>
+                <div class="chapter-eco-bar-row">
+                  <div class="chapter-eco-bar-label">新增水源涵养面积</div>
+                  <div class="chapter-eco-bar-track"><span class="chapter-eco-bar-fill is-soft" style="--eco-bar-fill:54%;"></span></div>
+                  <div class="chapter-eco-bar-value"><strong class="count-up" data-count-to="13" data-duration="1600">0</strong><span>万亩</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="chapter-eco-summary reveal-on-scroll reveal-soft" style="transition-delay:0.28s;">
+        <p>水清了，花开了，鸟回来了，鱼多了。</p>
+        <p>生态的复苏，是最诚实的回答。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-production-page hover-reveal-stage" id="productionShiftPage" aria-labelledby="productionShiftTitle">
+    <div class="chapter-production-shell">
+      <div class="chapter-production-copy reveal-on-scroll reveal-soft" style="transition-delay:0.05s;">
+        <div class="chapter-production-kicker">二、生产之变</div>
+        <h2 class="chapter-production-title" id="productionShiftTitle">绿水青山正在变成金山银山</h2>
+        <p class="chapter-production-lead">水清了，日子也要跟着好起来。洱海流域的绿色生态种植、环滇池的农文旅融合、海晏村的渔村更新和制度层面的价值核算，正在把“与湖共生”变成更具体的收入、产业和发展方式。</p>
+      </div>
+
+      <div class="chapter-production-metrics">
+        <article class="chapter-production-metric-card reveal-on-scroll" style="transition-delay:0.1s;">
+          <div class="chapter-production-metric-icon">耕</div>
+          <div class="chapter-production-metric-label">绿色生态种植推广</div>
+          <div class="chapter-production-metric-value"><span class="count-up" data-count-to="29" data-duration="1800">0</span><span class="chapter-production-unit">万亩</span></div>
+          <p>洱海流域从“大水大肥”转向生态种植。</p>
+        </article>
+        <article class="chapter-production-metric-card reveal-on-scroll" style="transition-delay:0.16s;">
+          <div class="chapter-production-metric-icon">产</div>
+          <div class="chapter-production-metric-label">新增农业产值</div>
+          <div class="chapter-production-metric-value"><span class="count-up" data-count-to="3.8" data-decimals="1" data-duration="1900">0</span><span class="chapter-production-unit">亿元</span></div>
+          <p>生态模式没有拖累发展，反而带来了更高产值。</p>
+        </article>
+        <article class="chapter-production-metric-card reveal-on-scroll" style="transition-delay:0.22s;">
+          <div class="chapter-production-metric-icon">收</div>
+          <div class="chapter-production-metric-label">带动农民增收</div>
+          <div class="chapter-production-metric-value"><span class="count-up" data-count-to="2.34" data-decimals="2" data-duration="2100">0</span><span class="chapter-production-unit">亿元</span></div>
+          <p>从向湖索取，到靠护湖增收，逻辑已经改变。</p>
+        </article>
+        <article class="chapter-production-metric-card reveal-on-scroll" style="transition-delay:0.28s;">
+          <div class="chapter-production-metric-icon">村</div>
+          <div class="chapter-production-metric-label">环滇池重点村</div>
+          <div class="chapter-production-metric-value"><span class="count-up" data-count-to="46" data-duration="1800">0</span><span class="chapter-production-unit">个</span></div>
+          <p>正在推进农文旅融合发展，一村一策形成新格局。</p>
+        </article>
+      </div>
+
+      <div class="chapter-production-stage">
+        <div class="chapter-production-puzzle-panel reveal-on-scroll reveal-soft" style="transition-delay:0.14s;">
+          <div class="chapter-production-panel-head">
+            <span>互动拼图</span>
+            <strong>拖拽碎片，拼回这张被修复后的湖滨空间</strong>
+          </div>
+          <div class="chapter-production-puzzle-layout" id="productionPuzzleStage">
+            <div class="chapter-production-puzzle-board-wrap">
+              <div class="chapter-production-puzzle-board" id="productionPuzzleBoard" aria-label="互动拼图板"></div>
+              <div class="chapter-production-puzzle-finished" id="productionPuzzleFinished" aria-hidden="true"></div>
+              <div class="chapter-production-puzzle-success" id="productionPuzzleSuccess">
+                <span>拼图完成</span>
+                <strong>生态有了价，绿水青山才能变成金山银山。</strong>
+              </div>
+            </div>
+            <div class="chapter-production-puzzle-tray">
+              <div class="chapter-production-puzzle-tip">把碎片拖进对应位置，湖岸线会慢慢完整。</div>
+              <div class="chapter-production-puzzle-pieces" id="productionPuzzlePieces"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chapter-production-data-panel reveal-on-scroll reveal-soft" style="transition-delay:0.22s;">
+          <article class="chapter-production-data-block">
+            <div class="chapter-production-data-icon">海</div>
+            <div class="chapter-production-data-copy">
+              <h3>海晏村：从静谧渔村到文旅融合代表</h3>
+              <p>作为滇池东岸现存唯一紧邻滇池且保存较完整的古渔村，海晏村有600多年历史，完整保留滨湖鱼骨状街巷格局。如今依托“七彩落霞”、高端民宿、地道滇味美食和16匠人坊，它正在把湖景和渔家文化转成新的生计。</p>
+              <div class="chapter-production-data-strip">
+                <span><strong class="count-up" data-count-to="600" data-duration="1900">0</strong>多年历史</span>
+                <span><strong class="count-up" data-count-to="30" data-duration="1700">0</strong>户村民家门口创业</span>
+                <span>户均年增收 <strong class="count-up" data-count-to="4" data-duration="1600">0</strong>万 - <strong class="count-up" data-count-to="5" data-duration="1700">0</strong>万元</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="chapter-production-data-block">
+            <div class="chapter-production-data-icon">策</div>
+            <div class="chapter-production-data-copy">
+              <h3>一村一策，沿湖村庄开始长出自己的主题</h3>
+              <p>按照“一村一策”打造，滇池沿岸正在形成一村一特色、一村一主题的发展格局。重点支持精品民宿、嵌入式产品线和农特产品经营，把“靠湖吃湖”改写成“养湖富湖”。</p>
+              <div class="chapter-production-bar-group">
+                <div class="chapter-production-bar-row">
+                  <div class="chapter-production-bar-label">绿色种植推广</div>
+                  <div class="chapter-production-bar-track"><span class="chapter-production-bar-fill" style="--production-bar-fill:82%;"></span></div>
+                  <div class="chapter-production-bar-value"><strong class="count-up" data-count-to="29" data-duration="1700">0</strong><span>万亩</span></div>
+                </div>
+                <div class="chapter-production-bar-row">
+                  <div class="chapter-production-bar-label">重点村融合发展</div>
+                  <div class="chapter-production-bar-track"><span class="chapter-production-bar-fill is-bright" style="--production-bar-fill:64%;"></span></div>
+                  <div class="chapter-production-bar-value"><strong class="count-up" data-count-to="46" data-duration="1800">0</strong><span>个</span></div>
+                </div>
+                <div class="chapter-production-bar-row">
+                  <div class="chapter-production-bar-label">新增农业产值</div>
+                  <div class="chapter-production-bar-track"><span class="chapter-production-bar-fill is-soft" style="--production-bar-fill:56%;"></span></div>
+                  <div class="chapter-production-bar-value"><strong class="count-up" data-count-to="3.8" data-decimals="1" data-duration="1900">0</strong><span>亿元</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="chapter-production-policy-card">
+            <div class="chapter-production-policy-date">2025.05.09</div>
+            <h3>制度开始为绿色发展定价</h3>
+            <p>云南省正式发布《高原湖泊流域生态资产和生态产品价值核算技术规范》，这是全省首个生态产品价值核算地方标准。生态保护补偿、生态损害赔偿、绿色投融资，从此有了更统一的技术基础。</p>
+            <div class="chapter-production-policy-foot">生态有了价，绿水青山才能变成金山银山。</div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter-life-page hover-reveal-stage" id="lifeShiftPage" aria-labelledby="lifeShiftTitle">
+    <div class="chapter-life-shell">
+      <div class="chapter-life-copy reveal-on-scroll reveal-soft" style="transition-delay:0.05s;">
+        <div class="chapter-life-kicker">三、生活之变</div>
+        <h2 class="chapter-life-title" id="lifeShiftTitle">从“不敢靠近”到“推窗见湖”</h2>
+        <p class="chapter-life-lead">生态好了，产业绿了，最终受益的是人。变化不只写在监测数据里，也写在饭后散步、月月巡湖、家门钥匙的托付、红马甲的队伍和108公里绿道的日常使用里。</p>
+      </div>
+
+      <div class="chapter-life-stage">
+        <div class="chapter-life-voices reveal-on-scroll reveal-soft" style="transition-delay:0.12s;">
+          <article class="chapter-life-voice-card">
+            <div class="chapter-life-voice-mark">“</div>
+            <p>现在每天饭后我都会带家人顺着城南河往异龙湖走一走，放松身心。</p>
+            <span>郭文洪，异龙湖边村级河长</span>
+          </article>
+          <article class="chapter-life-voice-card">
+            <div class="chapter-life-voice-mark">“</div>
+            <p>星云湖水清，河咀才会兴。</p>
+            <span>张宝林，81岁，“银发卫士”</span>
+          </article>
+          <article class="chapter-life-voice-card">
+            <div class="chapter-life-voice-mark">“</div>
+            <p>我想一直干到自己干不动的那天。</p>
+            <span>李春喜，洱海源头守护者</span>
+          </article>
+        </div>
+
+        <div class="chapter-life-gallery-panel reveal-on-scroll reveal-soft" style="transition-delay:0.18s;">
+          <div class="chapter-life-gallery-head">
+            <span>拖拽相册</span>
+            <strong>按住左右拖动，翻看普通人生活里的湖岸变化</strong>
+          </div>
+          <div class="chapter-life-gallery" id="lifeShiftGallery" tabindex="0" role="region" aria-label="生活之变图片相册">
+            <div class="chapter-life-gallery-track" id="lifeShiftGalleryTrack">
+              <article class="chapter-life-gallery-card is-active" data-title="海晏村的傍晚" data-meta="从渔村到文旅融合代表" data-desc="依托滇池绿道沿线产业经济带动，海晏村把绝美落日和渔家文化变成了新的生计。">
+                <img src="images/图片 35.png" alt="海晏村的傍晚">
+              </article>
+              <article class="chapter-life-gallery-card" data-title="饭后沿河散步" data-meta="从不愿靠近到主动亲近" data-desc="异龙湖边，水清之后，巡河与散步不再是两件分开的事，普通人的日常重新向湖面展开。">
+                <img src="images/图片 36.png" alt="饭后沿河散步">
+              </article>
+              <article class="chapter-life-gallery-card" data-title="把家门钥匙交给她" data-meta="73户村民的放心托付" data-desc="李春喜从试探性的6户托付，走到73户村民把钥匙放心交给她，守湖也改变了人与人之间的信任。">
+                <img src="images/图片 37.png" alt="把家门钥匙交给她">
+              </article>
+              <article class="chapter-life-gallery-card" data-title="红马甲汇成一片湖" data-meta="200余支队伍，1620名志愿者" data-desc="澄江市与抚仙湖畔的志愿者们来自不同民族、不同年龄、不同职业，却穿着同样的红马甲守护同一片湖。">
+                <img src="images/图片 38.png" alt="红马甲汇成一片湖">
+              </article>
+            </div>
+            <div class="chapter-life-gallery-overlay">
+              <div class="chapter-life-gallery-tag">生活现场</div>
+              <h3 class="chapter-life-gallery-title" id="lifeShiftGalleryTitle">海晏村的傍晚</h3>
+              <p class="chapter-life-gallery-text" id="lifeShiftGalleryText">依托滇池绿道沿线产业经济带动，海晏村把绝美落日和渔家文化变成了新的生计。</p>
+              <div class="chapter-life-gallery-meta" id="lifeShiftGalleryMeta">从渔村到文旅融合代表</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-life-metrics">
+        <article class="chapter-life-metric-card reveal-on-scroll" style="transition-delay:0.14s;">
+          <div class="chapter-life-metric-icon">守</div>
+          <div class="chapter-life-metric-label">星云湖“银发卫士”</div>
+          <div class="chapter-life-metric-value"><span class="count-up" data-count-to="48" data-duration="1800">0</span><span class="chapter-life-unit">名</span> / <span class="count-up" data-count-to="71" data-duration="1800">0</span><span class="chapter-life-unit">岁均龄</span></div>
+          <p>自1999年成立，每月4日坚持护湖，24年间用脚步丈量湖岸。</p>
+        </article>
+        <article class="chapter-life-metric-card reveal-on-scroll" style="transition-delay:0.2s;">
+          <div class="chapter-life-metric-icon">李</div>
+          <div class="chapter-life-metric-label">李春喜的9年</div>
+          <div class="chapter-life-metric-value"><span class="count-up" data-count-to="200" data-duration="1800">0</span><span class="chapter-life-unit">+副手套</span></div>
+          <p>更换4辆三轮车，行程3.7万公里，73户村民把钥匙放心交给她。</p>
+        </article>
+        <article class="chapter-life-metric-card reveal-on-scroll" style="transition-delay:0.26s;">
+          <div class="chapter-life-metric-icon">队</div>
+          <div class="chapter-life-metric-label">澄江市护湖志愿队</div>
+          <div class="chapter-life-metric-value"><span class="count-up" data-count-to="200" data-duration="1900">0</span><span class="chapter-life-unit">+支</span> / <span class="count-up" data-count-to="1620" data-duration="2200">0</span><span class="chapter-life-unit">人</span></div>
+          <p>汉族、彝族、回族等各族群众主动加入，形成全民护湖格局。</p>
+        </article>
+        <article class="chapter-life-metric-card reveal-on-scroll" style="transition-delay:0.32s;">
+          <div class="chapter-life-metric-icon">道</div>
+          <div class="chapter-life-metric-label">滇池绿道</div>
+          <div class="chapter-life-metric-value"><span class="count-up" data-count-to="108" data-duration="1900">0</span><span class="chapter-life-unit">公里</span></div>
+          <p>串联起湖泊、村庄与城市空间，成为共建共享的公共生活带。</p>
+        </article>
+      </div>
+
+      <div class="chapter-life-grid reveal-on-scroll reveal-soft" style="transition-delay:0.24s;">
+        <article class="chapter-life-story-block">
+          <h3>从“不愿靠近”到“饭后散步”</h3>
+          <p>异龙湖边的郭文洪，自2021年担任村级河长以来，已经连续5年守护城南河。水清了、河岸有景了，巡护的终点重新变成了家人愿意靠近的生活空间。</p>
+        </article>
+        <article class="chapter-life-story-block">
+          <h3>从“一个人弯腰”到“许多人穿红马甲”</h3>
+          <p>从李春喜的9年，到澄江市200余支、1620人的志愿服务队，再到昆明环滇池7个县（市、区）共同构成的示范圈，守湖逐渐从个体坚持变成了更广泛的公共行动。</p>
+        </article>
+        <article class="chapter-life-story-block">
+          <h3>从“护湖责任”到“推窗见湖”的日常</h3>
+          <p>抚仙湖保护日以“中华民族一家亲，共护美丽抚仙湖”为主题，滇池绿道贯通108公里。湖水不只是生态指标，也重新变成日常生活里可散步、可亲近、可共享的风景。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-consensus-page hover-reveal-stage" id="finalConsensusPage" aria-labelledby="finalConsensusTitle">
+    <div class="final-consensus-shell">
+      <div class="final-consensus-waterglow" aria-hidden="true"></div>
+      <div class="final-consensus-copy">
+        <p class="final-consensus-line final-consensus-line-sm final-consensus-hover-line" style="--line-delay:0s;">十年治湖。</p>
+        <p class="final-consensus-line final-consensus-line-sm final-consensus-hover-line" style="--line-delay:0.18s;">留下了一湖清水。</p>
+        <p class="final-consensus-line final-consensus-line-lg final-consensus-hover-line" style="--line-delay:0.42s;" id="finalConsensusTitle">更留下了一种共识。</p>
+        <p class="final-consensus-line final-consensus-line-sm final-consensus-hover-line" style="--line-delay:0.68s;">同饮一湖水的人。</p>
+        <p class="final-consensus-line final-consensus-line-sm final-consensus-hover-line" style="--line-delay:0.86s;">终将成为一家人。</p>
+        <p class="final-consensus-line final-consensus-line-xl final-consensus-hover-line" style="--line-delay:1.12s;">水清，则生态兴。</p>
+        <p class="final-consensus-line final-consensus-line-xl final-consensus-hover-line" style="--line-delay:1.36s;">人与共，则家国安。</p>
+      </div>
+      <div class="final-consensus-hint">鼠标经过此页，终章慢慢显现</div>
+    </div>
+  </section>
+
+  <section class="section timeline-section legacy-section" id="timelineSection" aria-hidden="true">
+    <div class="section-head section-cover cover-timeline">
+      <div>
+        <div class="section-label">第三章</div>
+        <h2 class="section-title">十年治湖，一场向水而行的 <span class="highlight">变革</span></h2>
+      </div>
+      <p class="section-desc">从“一湖之治”走向“流域之治”“全域联治”，这场变革既关乎制度，也关乎岸边每一个人。点击时间节点查看十年治理的关键转折。</p>
+    </div>
+    <div class="timeline-wrapper">
+      <div class="timeline">
+        <div class="timeline-track" id="timelineTrack"></div>
+      </div>
+    </div>
+    <div class="timeline-detail-panel" id="timelineDetail"></div>
+  </section>
+
+  <section class="section lakes-section legacy-section" id="lakes" aria-hidden="true">
+    <div class="section-head section-cover cover-lakes">
+      <div>
+        <div class="section-label">九湖治理</div>
+        <h2 class="section-title">从劣Ⅴ类到 <span class="highlight">全面向好</span></h2>
+      </div>
+      <p class="section-desc">2025 年，滇池、星云湖、杞麓湖、异龙湖成功摘除劣Ⅴ类帽子，抚仙湖、泸沽湖继续守住Ⅰ类标准。点击湖泊卡片查看治理亮点、治理措施与水质变化。</p>
+    </div>
+
+    <div class="filter-bar">
+      <label>按当前水质筛选</label>
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="Ⅰ">Ⅰ类</button>
+      <button class="filter-btn" data-filter="Ⅱ">Ⅱ类</button>
+      <button class="filter-btn" data-filter="Ⅲ">Ⅲ类</button>
+      <button class="filter-btn" data-filter="Ⅳ">Ⅳ类</button>
+      <button class="filter-btn" data-filter="Ⅴ">Ⅴ类</button>
+    </div>
+    <div class="lake-grid" id="lakeGrid"></div>
+  </section>
+
+  <section class="section chapter-section legacy-section" id="chapters" aria-hidden="true">
+    <div class="section-head section-cover cover-reading centered">
+      <div class="section-label">深度阅读</div>
+      <h2 class="section-title">沿着专题结构继续读下去</h2>
+      <p class="section-desc center">模块先完成基础版本，点击章节按钮可快速跳转，详情卡支持后续继续填充更多图表与真实数据。</p>
+    </div>
+    <div class="chapter-nav" id="chapterNav"></div>
+
+    <article class="text-section" id="ch-intro">
+      <div class="text-cover cover-intro">
+        <div class="section-label">导语</div>
+        <h3>高原湖泊，是云南发展与家园记忆的共同底色</h3>
+        <p>九颗高原明珠只占全省 2.05% 的土地，却承载了最密集的人口、最集中的发展活动，也沉淀着多民族共同的生活方式与精神记忆。</p>
+      </div>
+      <p class="lead">高原湖泊，是镶嵌在云岭大地上的明珠。滇池、洱海、抚仙湖、泸沽湖、阳宗海、程海、杞麓湖、异龙湖、星云湖，九颗“明珠”流域面积 8110 平方公里，占云南省面积的 2.05%，却养活了全省七分之一以上的人口，贡献了四分之一以上的 GDP。</p>
+    </article>
+
+    <article class="text-section" id="ch-chapter1">
+      <div class="text-cover cover-chapter1">
+        <div class="section-label">第一章</div>
+        <h3>九湖安澜，系于何处？</h3>
+        <p>守护九湖，守护的不是抽象的水体，而是云南发展的根基、数百万人的家园和多民族共同依存的生存空间。</p>
+      </div>
+      <p class="lead">“天下安澜，比屋可封。”古人以水之安宁，比喻天下之太平。“九湖安澜”，是把千年的治水理想投射到云南九大高原湖泊之上。九湖虽小，却承载着特殊重量。</p>
+      <div class="quote-panel">守护九湖，守护的从来不只是水。守护的是云南发展的根基，是数百万人口的家园，是下游数亿人的水源，也是多民族共同的精神原乡。</div>
+      <div class="chapter-image-grid">
+        <figure>
+          <img src="images/图片 12.png" alt="巡湖场景">
+          <figcaption>围绕湖岸展开的保护行动，正在重塑沿湖的生产与生活方式。</figcaption>
+        </figure>
+        <figure>
+          <img src="images/图片 34.png" alt="湿地修复">
+          <figcaption>退出来的岸线与湿地空间，成为生态修复的落脚点。</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="text-section" id="ch-chapter2">
+      <div class="text-cover cover-chapter2">
+        <div class="section-label">第二章</div>
+        <h3>天赐明珠，也有脆弱时</h3>
+        <p>换水周期慢、自净能力弱、开发强度高，决定了九湖治理必须直面一场先天脆弱与后天压力交织的长期战。</p>
+      </div>
+      <p class="lead">高原湖泊的难，不只是污染治理的难，更是与先天脆弱条件赛跑的难。抚仙湖一滴水要等近两个世纪才能完成更新，滇池平均 4 年才能置换一次，污染一旦进入，很难快速排出。</p>
+      <p class="lead">与此同时，九湖流域仍是云南人口最密集、经济最活跃、粮食生产最集中的区域。人口负荷大、农业面源污染重、环湖开发强度大、旅游压力持续增加，这些后天压力叠加在先天脆弱之上，让治湖变成真正意义上的“湖泊革命”。</p>
+    </article>
+  </section>
+
+  <section class="section stories-section legacy-section" id="stories" aria-hidden="true">
+    <div class="section-head section-cover cover-stories">
+      <div>
+        <div class="section-label">第四章</div>
+        <h2 class="section-title">一湖之水，<span class="highlight-gold">万家之责</span></h2>
+      </div>
+      <p class="section-desc">从洱海源头的白族村，到滇池水面的铁皮船；从阳宗海畔的实验室，到抚仙湖岸的红马甲。不同民族、不同职业、不同年龄的人，因为同一片湖水走到了一起。</p>
+    </div>
+    <div class="story-grid" id="storyGrid"></div>
+  </section>
+
+  <section class="section revival-section legacy-section" id="revival" aria-hidden="true">
+    <div class="section-head section-cover cover-revival">
+      <div>
+        <div class="section-label">第五章</div>
+        <h2 class="section-title">水清之后，看见 <span class="highlight">“我们”</span></h2>
+      </div>
+      <p class="section-desc">海菜花回来了，候鸟回来了，红嘴鸥、白骨顶鸡、针尾鸭重新停在湖面。生产方式也在改变，从“靠湖吃湖”到“养湖富湖”，生态修复成为生活修复的一部分。</p>
+    </div>
+
+    <div class="eco-grid" id="ecoGrid"></div>
+
+    <div class="revival-layout">
+      <div class="revival-story">
+        <h3>生态之变</h3>
+        <p>海菜花被称为“水质试金石”，只能在清洁水体中生长。洱海海菜花分布面积从 2021 年约 9 万平方米增至 2025 年约 76 万平方米，达到有统计以来最大值。异龙湖脱劣后，红嘴鸥等候鸟再次用翅膀投下了生态复苏的一票。</p>
+        <div class="detail-buttons">
+          <button class="btn btn-outline small" onclick="showEcoDetail('seaweed')">海菜花回归</button>
+          <button class="btn btn-outline small" onclick="showEcoDetail('birds')">候鸟回归</button>
+          <button class="btn btn-outline small" onclick="showEcoDetail('wetland')">湿地修复</button>
+        </div>
+        <div class="inline-panel open" id="ecoDetail"></div>
+      </div>
+      <div class="revival-gallery">
+        <figure class="gallery-large">
+          <img src="images/图片 21.png" alt="红嘴鸥">
+          <figcaption>异龙湖与滇池湖滨带的鸟类回归，是生态恢复最直接的信号。</figcaption>
+        </figure>
+        <figure>
+          <img src="images/图片 5.png" alt="湖面与水鸟">
+        </figure>
+        <figure>
+          <img src="images/图片 31.png" alt="湿地景观">
+        </figure>
+      </div>
+    </div>
+
+    <div class="production-panel">
+      <div>
+        <div class="section-label">生产与生活之变</div>
+        <h3>从“不敢靠近”到“推窗见湖”</h3>
+        <p>洱海流域推广绿色生态种植模式 29 万亩，新增农业产值 3.8 亿元，带动农民增收 2.34 亿元。环滇池沿岸重点村推进农文旅融合发展，传统渔村正转化为文旅共生样本。湖岸恢复之后，普通人的散步路线、就业方式和社区关系也跟着改变。</p>
+      </div>
+      <button class="btn btn-primary" onclick="showLifePanel()">展开生活变化</button>
+    </div>
+    <div class="inline-panel" id="lifePanel"></div>
+  </section>
+</main>
+
+<footer class="footer" id="footer">
+  <div class="footer-inner">
+    <div class="footer-quote">水清，则生态兴<br><span class="highlight">人与共，则家园安</span></div>
+    <p>十年治湖，留下的不只是清水，更是多民族共建家园的共识。</p>
+    <div class="footer-buttons">
+      <button class="btn btn-primary" onclick="scrollToSection('hero')">回到封面</button>
+      <button class="btn btn-outline" onclick="scrollToSection('lakesReportPage')">查看九湖</button>
+      <button class="btn btn-outline" onclick="scrollToSection('liChunxiPage')">阅读故事</button>
+    </div>
+    <div class="footer-sources">
+      <div class="section-label">数据来源</div>
+      <div class="source-item expanded" onclick="this.classList.toggle('expanded')">
+        <div class="source-header">云南省生态环境厅 <span>▾</span></div>
+        <div class="source-detail">九湖水质监测数据、《2025年云南省生态环境状况公报》、滇池水质创 1993 年以来最好等公开材料。</div>
+      </div>
+      <div class="source-item" onclick="this.classList.toggle('expanded')">
+        <div class="source-header">云南省水利厅 <span>▾</span></div>
+        <div class="source-detail">流域面积、蓄水量、换水周期、河湖长制与流域治理相关公开数据。</div>
+      </div>
+      <div class="source-item" onclick="this.classList.toggle('expanded')">
+        <div class="source-header">云南省统计局 <span>▾</span></div>
+        <div class="source-detail">流域人口、GDP 占比、工业增加值等宏观统计数据。</div>
+      </div>
+      <div class="source-item" onclick="this.classList.toggle('expanded')">
+        <div class="source-header">中国环境报、新华网、云南发布等 <span>▾</span></div>
+        <div class="source-detail">海菜花、候鸟回归、地方治理人物故事与阳宗海治理案例等报道。</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>专题名称：《水清·人与共——高原湖泊十年治理的多民族答卷》</p>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-content" id="modalContent">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalInner"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
